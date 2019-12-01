@@ -6,10 +6,10 @@ export default function InfoUser() {
   
   return (<footer>
        <MDBRow> 
-  <MDBCol sm="5">
+  <MDBCol>
   <img className="imgProfile" src={urlImg} alt="" /> 
    </MDBCol>
-  <MDBCol sm="7">
+  <MDBCol>
        <MDBRow> 
   <p className="name"> {name}</p> 
           <p className="username"> @{username}</p>

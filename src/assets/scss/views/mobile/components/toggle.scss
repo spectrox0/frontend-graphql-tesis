@@ -1,0 +1,29 @@
+.toggle{
+    width:1.2rem;
+    cursor: pointer;
+    display: none;
+    div {
+        height: 1.5px;
+        box-shadow: 0 0 1px $color-primary;
+        width: 100%;
+        background:$color-primary;
+        transition: all ease .3s;
+        margin-bottom: .4rem;
+        opacity: .9;
+    }
+    &:hover {
+        :first-child {
+          transform: translateY(-.1rem);
+        }
+        :last-child {
+            transform: translateY(.1rem);
+        }
+    }
+    &:active {
+         opacity: .5;
+    }
+    
+    @media screen and (max-width:992px) {
+        display: inline-block;
+    }
+}

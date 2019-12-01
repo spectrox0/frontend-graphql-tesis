@@ -1,11 +1,11 @@
 import React from 'react';
-
-
-export default function HeaderSideBar() {
+import Toggle from '../toggle.js'
+export default function HeaderSideBar({onClick}) {
 
   return (<header>
       <h1> Tesis </h1>
-      <input type="text" placeholder="search" />
+      <Toggle onClick={onClick} />
+     
   </header>  )
 
 }

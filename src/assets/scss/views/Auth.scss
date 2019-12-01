@@ -29,7 +29,7 @@
     }
 }
 .containerAuth{
-  width:25rem; 
+  width:$width-container-auth;
   max-width: 90%;
   margin-left: 5%;
   margin-right: 5%;
@@ -55,16 +55,20 @@
   }
 }
 .pageAuth {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     background: $background-color;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-}
-
+} 
+ .form-group {
+     width: 100%;
+  
+ }
 .formSignIn {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -72,13 +76,14 @@
     position: relative;
     padding-top:1rem;
     overflow: hidden;
-    transform: translateX(-25rem);
+    transform: translateX(-$width-container-auth);
     &.isSignIn{
         transform: translateX(0);
     }
 }
 .formSignUp {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -93,7 +98,7 @@
    
     &.isSignIn {
     
-    transform: translateX(25rem)
+    transform: translateX($width-container-auth);
     
      
     }

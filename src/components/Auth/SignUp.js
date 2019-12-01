@@ -103,7 +103,7 @@ export default function SignIn ({isSignIn}) {
           /* and other goodies */
         }) => (loading || loginRes.loading)? <Spinner/> :(
           <form className={isSignIn?"formSignUp isSignIn":"formSignUp"} onSubmit={handleSubmit}>
-            <div className="form-group-image" > 
+            <div className="form-group" > 
           
           {urlImg.length>0 && <MDBBtn htmlFor="uploadImage"  className="loadPhoto" tag={(props)=> <label {...props} />} > 
            <img src={urlImg} alt=""/>

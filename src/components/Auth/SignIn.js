@@ -79,7 +79,6 @@ export default function SignIn ({isSignIn}) {
             <MDBIcon icon="user" />
             
             </div>
-            <Error touched={touched.username} message={errors.username}> </Error>
             <div className={values.password.length>0? "form-group not-empty form-icon":"form-group form-icon"}> 
           
             <input
@@ -94,7 +93,7 @@ export default function SignIn ({isSignIn}) {
              <label className="animated-label" htmlFor="password"> Password </label>
              <MDBIcon icon="lock" />
             </div>
-            <Error touched={touched.password} message={errors.password}> </Error>
+           
            
             <MDBBtn className="btn-primary-color"  disabled={isSubmitting} type="submit">
               Submit

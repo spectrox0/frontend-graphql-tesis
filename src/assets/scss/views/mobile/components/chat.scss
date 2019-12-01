@@ -1,0 +1,26 @@
+.chat {
+    transition: .3s ease all;
+    @media screen and (max-width:992px) {
+        margin-left: 0;
+    }
+    .navbar {
+        .nav-item {
+            .btn {
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+                i {
+                       opacity: .9;
+                        font-size: 1.3em;
+                        color: $color-primary;
+                   
+                }
+            }
+        }
+        @media screen and (min-width:991px) {
+            display: none;
+        }
+    }
+   
+}

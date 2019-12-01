@@ -22,4 +22,11 @@
  //views 
  @import './views/Auth.scss';
  @import '/views/Home.scss';
+
+ //responsive 
+
+ @import './views/mobile/components/sidebars.scss';
+ @import './views/mobile/components/chat.scss';
+ @import './views/mobile/components/toggle.scss';
+
   

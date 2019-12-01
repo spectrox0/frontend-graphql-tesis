@@ -5,6 +5,7 @@
     flex-direction: column;
     background: $background-sideBar;
     width: 25rem;
+    max-width: 100%;
     box-shadow: 0 0 3px $background-sideBar;
 
     header {
@@ -75,6 +76,7 @@
         position: absolute;
         bottom: 0;
         display: flex;
+        justify-content: space-around;
         width: 100%;
         padding:1rem;
         padding-top: 0;

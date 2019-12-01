@@ -1,16 +1,21 @@
 .chat {
     margin-left: 25rem;
-    
     min-height: 100vh;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .messages {
-        height: 90vh;
+        height: 80vh;
         padding: 1rem;
         background: rgba(255,255,255,.1);
         padding:1rem;
         box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
     }
     .inputMessage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: .4rem;
         input {
             width: 85%;
             height: 3rem;
@@ -25,5 +30,17 @@
                 outline: none;
             }
         }
+        @media screen and (max-width:768px) {
+           input {
+            width: 75%;
+           } 
+           
+        }
+        @media screen and (max-width:576px) {
+            input {
+             width: 65%;
+            } 
+            
+         }
     }
 }
