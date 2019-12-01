@@ -1,0 +1,38 @@
+
+.btn-primary-color{
+    background: $color-primary;
+    color: #FFFFFF;
+    border:none;
+    width: 6rem;
+    border-radius: 500px;
+    &:hover {
+        background: $color-primary;
+        outline: none;
+        color: #FFFFFF;
+        text-shadow: 0 0 2px #FFFFFF;
+        border: none;
+    }
+    &:focus {
+        background: $color-primary;
+        outline: none;
+        box-shadow: none;
+        opacity: .9;
+    }
+
+}
+.btn-send {
+    color: $color-primary;
+    border:none;
+    border-radius: 50%;
+    text-shadow: 0 0 3px $color-primary;
+    font-size: 2em;
+    &:hover {
+        color: $color-primary;
+    }
+    &:focus {
+       
+        outline: none;
+        box-shadow: none;
+        opacity: .9;
+    }
+    }

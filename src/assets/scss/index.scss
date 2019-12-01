@@ -1,0 +1,25 @@
+
+
+  // imports 
+ @import './variables.scss';
+ body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-font;
+}
+
+
+ //components 
+@import './components/input.scss';
+@import './components/button.scss';
+@import './components/sidebar.scss';
+@import './components/chat.scss';
+@import './components/spinner.scss';
+ //views 
+ @import './views/Auth.scss';
+ @import '/views/Home.scss';
+  

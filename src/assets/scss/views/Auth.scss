@@ -1,0 +1,139 @@
+.controlSwitch{
+    display: flex;
+    justify-content: center;
+    span{ 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: .5rem;
+        font-size: 1em;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+        &:after {
+            content:"";
+            width:0;
+            height: 2px;
+            transition: all .2s ease-in-out;
+            background: $color-primary;
+        }
+        &.active {
+            text-shadow: 0 0 .4px $color-font;
+            transform: translateY(1px);
+            &:after {
+               
+                width:100%;
+                
+            }
+        }
+    }
+}
+.containerAuth{
+  width:25rem; 
+  max-width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  overflow: hidden;
+  .error {
+      position: relative;
+      top: -.5rem;
+      color: red;
+      margin:0;
+      font-size: .8em;
+  }.message-correct {
+    color: greenyellow;
+    position: relative;
+    top: -.5rem;
+    margin:0;
+    font-size: .8em;
+  }
+}
+.pageAuth {
+    height: 100vh;
+    display: flex;
+    background: $background-color;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.formSignIn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+    position: relative;
+    padding-top:1rem;
+    overflow: hidden;
+    transform: translateX(-25rem);
+    &.isSignIn{
+        transform: translateX(0);
+    }
+}
+.formSignUp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all.3s ease-in-out;
+    position: relative;
+    top: -9.5rem;
+    transform: translateX(0);
+   
+   
+   
+  
+   
+    &.isSignIn {
+    
+    transform: translateX(25rem)
+    
+     
+    }
+}
+.loadPhoto {
+    width: 5rem;
+    height: 5rem;
+    background: rgb(238, 238, 238);
+    border-radius: 50%;
+    padding:0;
+    margin:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px rgb(235, 235, 235);
+    cursor: pointer;
+    &:hover {
+        opacity: .9;
+        i {
+            text-shadow: 0 0 1px $color-primary;
+        }
+    }
+    &:focus {
+        box-shadow: 0 0 3px rgb(235, 235, 235);
+        outline: none;
+        
+    }
+    i {
+        color: $color-primary;
+        font-size: 1.6em;
+    } 
+    img {
+        object-fit: fill;
+        width: 5rem;
+        height: 5rem;
+    }
+    .spinner-border {
+        width: 2rem;
+        height: 2rem;
+        margin:0;
+    }
+
+}

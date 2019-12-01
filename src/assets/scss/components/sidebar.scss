@@ -1,0 +1,110 @@
+.sideBar {
+    position: fixed;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: $background-sideBar;
+    width: 25rem;
+    box-shadow: 0 0 3px $background-sideBar;
+
+    header {
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px rgba(255,255,255,.1);
+        padding: 1rem;
+        
+        h1 {
+            font-size: 2em;
+        }
+    }
+    nav {
+      
+        
+        height: 10vh;
+        ul { 
+            padding: 0;
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            border-bottom: solid 1px rgba(255,255,255,.1);
+           
+            li { 
+                padding:0;
+                padding-top: 1rem;
+                margin: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: .3s ease-in-out;
+                cursor: pointer;
+                &:after {
+                    content:"";
+                    height: 2px;
+                    position: relative;
+                    top:1.5px;
+                    background: $color-primary;
+                    box-shadow: 0 0 5px $color-primary;
+                    width: 0;
+                    transition: all .3s ease-in-out;
+                }
+                &.active {
+                    text-shadow: 0 0 2px $color-font;
+                    background: rgba(255,255,255,.1);
+                    box-shadow: 0 0 3px rgba(255,255,255,.1) ;
+                    &:after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .conversations {
+        height: 65vh;
+        
+    }
+    .categories {
+        height: 65vh;
+    }
+    .create {
+        height: 65vh;
+    }
+    footer {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        width: 100%;
+        padding:1rem;
+        padding-top: 0;
+    
+        .imgProfile{
+            position: relative;
+            top:- 1rem;
+            box-shadow:  0 0 5px rgba(0,0,0,0.5);
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+        }
+        .username {
+            color: $color-primary;
+            font-size: .9em;
+            margin: 0;
+        }
+        .name {
+            margin: 0;
+            font-size: 1.2em;
+            text-transform: capitalize;
+
+        }
+        .options{
+            display: flex;
+            justify-content: flex-end;
+            i {
+                font-size: 2rem;
+            }
+            
+        }
+    }
+}
