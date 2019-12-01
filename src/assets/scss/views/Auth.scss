@@ -33,13 +33,17 @@
   max-width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 5rem;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
   overflow: hidden;
+  .forms {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+  }
   .error {
       position: relative;
       top: -.5rem;
@@ -64,33 +68,37 @@
 } 
  .form-group {
      width: 100%;
-  
+    display: flex;
+    justify-content: center;;
  }
 .formSignIn {
     display: flex;
-    width: 100%;
+    position: relative;
+    width:$width-container-auth;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    transition: all .3s ease-in-out;
-    position: relative;
-    padding-top:1rem;
+    padding: 1rem;
     overflow: hidden;
-    transform: translateX(-$width-container-auth);
+    align-items: center;
+    transition: all.3s ease-in-out;
+    transform: translateX(-100%);
+  
     &.isSignIn{
-        transform: translateX(0);
+      
+        transform: translateX(50%);
     }
 }
 .formSignUp {
     display: flex;
-    width: 100%;
+    position: relative;
+    width:$width-container-auth;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    height: auto;
+    padding: 1rem;
     align-items: center;
     transition: all.3s ease-in-out;
-    position: relative;
-    top: -9.5rem;
-    transform: translateX(0);
+    transform: translateX(-50%);
    
    
    
@@ -98,7 +106,7 @@
    
     &.isSignIn {
     
-    transform: translateX($width-container-auth);
+    transform: translateX(100%);
     
      
     }

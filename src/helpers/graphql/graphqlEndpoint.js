@@ -3,12 +3,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 
-const endpoint = 'https://api-graphql-tesis.herokuapp.com/graphql'
+//const endpoint = 'https://api-graphql-tesis.herokuapp.com/graphql'
 
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({
-  uri: endpoint
-// uri: 'http://localhost:4000/graphql'
+ // uri: endpoint
+ uri: 'http://localhost:4000/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {

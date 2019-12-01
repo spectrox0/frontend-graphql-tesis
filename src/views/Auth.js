@@ -20,8 +20,10 @@ export default function Auth() {
   <div className="pageAuth"> 
   <MDBContainer className="containerAuth"> 
    <Control isSignIn={signIn} switchSign={switchSign} />
+     <div className="forms"> 
      <SignIn isSignIn={signIn}/> 
      <SignUp isSignIn={signIn}/> 
+     </div>
   </MDBContainer>
   </div>
  )

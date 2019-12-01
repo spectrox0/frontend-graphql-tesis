@@ -7,5 +7,7 @@ export default createContext({
     name:null, 
     userId: null , 
     login: (token, username ,name, userId, urlImg) => { },
+    updateUser: () => {
+    },
     logout: () => { }
 }); 

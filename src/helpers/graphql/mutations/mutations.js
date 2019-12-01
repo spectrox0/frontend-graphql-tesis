@@ -21,3 +21,16 @@ mutation login($username: String!, $password:String!) {
   }
 }
 `
+
+export const UPDATE_USER = gql`
+mutation 
+updateUser($userInput: UpdateUserInput!) {
+  updateUser(userInput: $userInput) {
+    _id
+    name 
+    username
+    urlImg 
+  }
+
+}
+` 

@@ -12,15 +12,18 @@ export default function IsAuth() {
     const [urlImg, setUrlImg] = useState(null);
     const {data, loading ,error , refetch} = useQuery(CURRENT_USER);
 
-    const login = (token, username ,name, userId, urlImg) => {
+    const login = (token, username ,name, _id, urlImg) => {
         setToken(token);
         setUsername(username);
         setName(name);
-        setUserId(userId);
+        setUserId(_id);
         setUrlImg(urlImg);
         localStorage.setItem("token", token);
        }
-
+     
+       const updateUser = () => {
+        refetch();
+       }
        const logout = () => {
         setToken(null);
         setUsername(null);
@@ -38,12 +41,13 @@ export default function IsAuth() {
              logout();
              return; 
             }
-            console.log(data.currentUser)
+           console.log("recarga")
             setToken(response);
             setUsername(data.currentUser.username); 
             setName(data.currentUser.name);
             setUserId(data.currentUser._id);
             setUrlImg(data.currentUser.urlImg);
+            console.log(data.currentUser.name)
         }
     
       }, [data,loading]);
@@ -57,7 +61,8 @@ export default function IsAuth() {
           login: login,
           name: name,
           userId:userId,
-          logout: logout }}>
+          logout: logout , 
+          updateUser: updateUser}}>
 
 
         {(!loading) &&  

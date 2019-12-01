@@ -44,7 +44,7 @@ export default function SignIn ({isSignIn}) {
                 data.login.token ,
                 data.login.username, 
                 data.login.name, 
-                data.login.userId,
+                data.login._id,
                 data.login.urlImg
               )
             }
