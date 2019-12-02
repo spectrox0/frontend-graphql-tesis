@@ -1,10 +1,11 @@
 import React from 'react';
+import CardCategories from '../Cards/CardCategory';
+export default function Conversations({options, categories}) {
 
-
-export default function Conversations() {
-
-  return (<section className="categories">
-  
+  const Cards = ({categories}) => 
+   categories.map((category, key)=> <CardCategories key={key} name={category.name.replace("_"," ")} />)
+  return (<section className={options===1? "categories active": "categories"}>
+       {categories && <Cards categories={categories}/> }
   </section> )
 
 }

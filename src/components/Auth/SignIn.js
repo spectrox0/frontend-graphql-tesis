@@ -44,7 +44,7 @@ export default function SignIn ({isSignIn}) {
                 data.login.token ,
                 data.login.username, 
                 data.login.name, 
-                data.login._id,
+                data.login.userId,
                 data.login.urlImg
               )
             }
@@ -62,43 +62,48 @@ export default function SignIn ({isSignIn}) {
           handleSubmit,
           isSubmitting,
           /* and other goodies */
-        }) => loading? (<Spinner/> ):  (
+        }) =>   (
           <form className={isSignIn?"formSignIn isSignIn":"formSignIn"} onSubmit={handleSubmit}>
-              <div className={values.username.length>0? "form-group not-empty form-icon":"form-group form-icon"}> 
+             {
+               loading? (<Spinner/> ): 
+               <> 
+                <div className={values.username.length>0? "form-group not-empty form-icon":"form-group form-icon"}> 
           
-            <input
-              className="form-control"
-              id="username"
-              type="text"
-              name="username"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.username}
-            />
-            <label className="animated-label" htmlFor="username"> Username </label>
-            <MDBIcon icon="user" />
-            
-            </div>
-            <div className={values.password.length>0? "form-group not-empty form-icon":"form-group form-icon"}> 
+          <input
+            className="form-control"
+            id="username"
+            type="text"
+            name="username"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.username}
+          />
+          <label className="animated-label" htmlFor="username"> Username </label>
+          <MDBIcon icon="user" />
           
-            <input
-              className="form-control"
-              id="password"
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-             <label className="animated-label" htmlFor="password"> Password </label>
-             <MDBIcon icon="lock" />
-            </div>
-           
-           
-            <MDBBtn className="btn-primary-color"  disabled={isSubmitting} type="submit">
-              Submit
-            </MDBBtn>
-        {error && <span> {error.graphQLErrors.map(({message}) => message)} </span>}
+          </div>
+          <div className={values.password.length>0? "form-group not-empty form-icon":"form-group form-icon"}> 
+        
+          <input
+            className="form-control"
+            id="password"
+            type="password"
+            name="password"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+          />
+           <label className="animated-label" htmlFor="password"> Password </label>
+           <MDBIcon icon="lock" />
+          </div>
+         
+         
+          <MDBBtn className="btn-primary-color"  disabled={isSubmitting} type="submit">
+            Submit
+          </MDBBtn>
+      {error && <span> {error.graphQLErrors.map(({message}) => message)} </span>}</>
+             }
+             
           </form>
           
         )}

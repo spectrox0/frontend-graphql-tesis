@@ -63,17 +63,51 @@
             }
         }
     }
-    .conversations {
-        height: calc(100vh - 14rem);
-       
+    .switch {
         
+        overflow: hidden;
+        display: flex;
+      
+        align-items: flex-start;
+        .chats , .categories,  .create {
+            display: inline-block;
+            position: relative;
+            padding:1rem;
+            height: calc(100vh - 14rem);
+            transition: .3s ease all;
+            overflow: hidden;
+            min-width: 100%;
+         
+           
+        } 
+        .chats {
+           
+            transform: translateX(-100%);
+            &.active {
+                transform: translateX(0%);
+            }
+         
+        }
+        .categories {
+            transform: translateY(-100%);
+            
+            
+            &.active {
+                
+                transform: translateX(-100%);
+               
+            }
+            
+        }
+        .create {
+           
+            &.active {
+                transform: translateX(-200%);
+            }
+            
+        }
     }
-    .categories {
-        height: calc(100vh - 14rem);
-    }
-    .create {
-        height: calc(100vh - 14rem);
-    }
+   
     footer {
         height: 8rem;
         display: flex;

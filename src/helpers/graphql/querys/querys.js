@@ -11,3 +11,14 @@ export const CURRENT_USER = gql`
 }
 }
 `
+
+export const QUERY_CATEGORY = gql`
+ {
+  __type(name:"category") {
+    enumValues{
+      name
+      
+    }
+  }
+}
+`

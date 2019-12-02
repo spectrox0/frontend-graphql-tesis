@@ -1,5 +1,5 @@
 .settings {
-    height: 100%;
+    min-height: 100vh;
     width: $width-sidebar;
     max-width: 100%;
     position: absolute;
@@ -7,7 +7,7 @@
     margin:0;
     .modal-content{
         background: rgba($background-sideBar,0.9);
-        height: 100%;
+        min-height: 100vh;
         border-radius: 0;
         .modal-header {
             color:$color-primary;

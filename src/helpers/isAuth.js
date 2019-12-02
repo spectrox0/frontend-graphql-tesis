@@ -12,11 +12,11 @@ export default function IsAuth() {
     const [urlImg, setUrlImg] = useState(null);
     const {data, loading ,error , refetch} = useQuery(CURRENT_USER);
 
-    const login = (token, username ,name, _id, urlImg) => {
+    const login = (token, username ,name, userId, urlImg) => {
         setToken(token);
         setUsername(username);
         setName(name);
-        setUserId(_id);
+        setUserId(userId);
         setUrlImg(urlImg);
         localStorage.setItem("token", token);
        }

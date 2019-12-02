@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Header from './HeaderSideBar';
 import Menu from './Menu'
-import Conversation from './Conversations';
 import Settings from './Settings'
 import InfoUser from './InfoUser'
+
+import Switch from './Switch.js'
 
 export default function SideBar({isOpenSideBar , onClick}) {
     const [options , setOptions] = useState(0);
@@ -20,7 +21,7 @@ export default function SideBar({isOpenSideBar , onClick}) {
         <Header onClick={onClick} />
         <Menu options={options} changeOption={changeOption} />
         </div>
-        <Conversation/>
+       <Switch options={options} />
         <InfoUser toggle={openSettings} />
         <Settings toggle={openSettings} isOpen={isOpenSettings} />
         </div> </>)

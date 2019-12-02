@@ -14,9 +14,13 @@ export default function Settings({isOpen, toggle}) {
    const {username , name , urlImg, userId, updateUser } = useContext(AuthContext);
    const [updateUserr, {data, loading, error}] = useMutation(UPDATE_USER);
    
-   const [urlImg1, setUrlImg] = useState(urlImg);
+   const [urlImg1, setUrlImg] = useState("");
    const [isLoad, setIsLoad] = useState(false);
 
+   React.useEffect(()=> {
+       console.log("ejecuta")
+      setUrlImg(urlImg);
+   },[urlImg])
    const handlingLoadImage = (value) => {
     setIsLoad(value);
   }
@@ -37,6 +41,11 @@ export default function Settings({isOpen, toggle}) {
           errors.username ="No more 16 characters"
           if(values.username.length<=0) {
            errors.username="rellene el campo"
+          }
+          if(values.name.length>16)
+          errors.name ="No more 16 characters"
+          if(values.name.length<=0) {
+           errors.name="rellene el campo"
           }
           if(values.password.length>16)
           errors.password ="No more 16 characters"

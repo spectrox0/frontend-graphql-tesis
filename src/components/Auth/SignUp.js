@@ -82,7 +82,7 @@ export default function SignIn ({isSignIn}) {
                     data.login.token ,
                     data.login.username, 
                     data.login.name, 
-                    data.login._id,
+                    data.login.userId,
                     data.login.urlImg
                   )
                 }
@@ -101,9 +101,13 @@ export default function SignIn ({isSignIn}) {
           handleSubmit,
           isSubmitting,
           /* and other goodies */
-        }) => (loading || loginRes.loading)? <Spinner/> :(
+        }) =>  (
           <form className={isSignIn?"formSignUp isSignIn":"formSignUp"} onSubmit={handleSubmit}>
-            <div className="form-group" > 
+            {
+              (loading || loginRes.loading)? <Spinner/> 
+              :
+              <> 
+              <div className="form-group" > 
           
           {urlImg.length>0 && <MDBBtn htmlFor="uploadImage"  className="loadPhoto" tag={(props)=> <label {...props} />} > 
            <img src={urlImg} alt=""/>
@@ -198,6 +202,10 @@ export default function SignIn ({isSignIn}) {
             <MDBBtn className="btn-primary-color" type="submit">
               Submit
             </MDBBtn>
+              </>
+
+            }
+            
           </form>
         )}
       </Formik>
