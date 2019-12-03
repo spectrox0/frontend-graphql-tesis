@@ -39,20 +39,23 @@ export default function SignIn ({isSignIn}) {
             errors.email = 'Invalid email address';
           } 
           if(values.password.length===0) {
-            errors.password = "password required"
+            errors.password = "Required"
+          }
+          if(values.password2.length===0) {
+            errors.password2 = "Required"
           }
           if(values.password.length>0 && values.password2.length>0 && values.password2!==values.password){
             errors.password2= 'password not coincide';
           }
           if (!values.username) {
             errors.username = 'Required';}
-            else if(values.username.length<4) {
-              errors.username= "more 4 characters"
+            else if(values.username.length<3) {
+              errors.username= "more 3 characters"
             }
             if (!values.name) {
               errors.name = 'Required';}
-              else if(values.name.length<4) {
-                errors.name= "more 4 characters"
+              else if(values.name.length<3) {
+                errors.name= "more 3 characters"
               }
 
           return errors;

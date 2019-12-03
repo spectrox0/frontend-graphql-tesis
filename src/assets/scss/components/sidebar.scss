@@ -67,17 +67,16 @@
         
         overflow: hidden;
         display: flex;
-      
+        height: calc(100vh - 14rem);
         align-items: flex-start;
         .chats , .categories,  .create {
             display: inline-block;
             position: relative;
             padding:1rem;
-            height: calc(100vh - 14rem);
+            height: 100%;
             transition: .3s ease all;
-            overflow: hidden;
             min-width: 100%;
-         
+          
            
         } 
         .chats {

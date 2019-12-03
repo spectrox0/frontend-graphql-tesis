@@ -34,3 +34,15 @@ updateUser($userInput: UpdateUserInput!) {
 
 }
 ` 
+export const CREATE_POST = gql`
+mutation 
+updateUser($userInput: UpdateUserInput!) {
+  updateUser(userInput: $userInput) {
+    _id
+    name 
+    username
+    urlImg 
+  }
+}
+
+`

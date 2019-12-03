@@ -20,6 +20,10 @@
 @import './components/chat.scss';
 @import './components/spinner.scss';
 @import './components/settings.scss';
+@import './components/scroll.scss';
+@import './components/cardCategory.scss';
+@import './components/select.scss';
+@import './components/createPost.scss';
  //views 
  @import './views/Auth.scss';
  @import '/views/Home.scss';
@@ -29,5 +33,3 @@
  @import './views/mobile/components/sidebars.scss';
  @import './views/mobile/components/chat.scss';
  @import './views/mobile/components/toggle.scss';
-
-  

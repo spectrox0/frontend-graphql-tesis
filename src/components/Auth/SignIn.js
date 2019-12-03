@@ -19,20 +19,19 @@ export default function SignIn ({isSignIn}) {
         initialValues={{ username: '', password: '' }}
         validate={(values) => {
           var errors ={}
-          if(values.username.length>16)
-          errors.username ="No more 16 characters"
+          if(values.username.length>30)
+          errors.username ="No more 30 characters"
           if(values.username.length<=0) {
-           errors.username="rellene el campo"
+           errors.username="required"
           }
-          if(values.password.length>16)
-          errors.password ="No more 16 characters"
+      
           if(values.password.length<=0) {
-           errors.password="rellene el campo"
+           errors.password="required"
           }
           return errors;
         }}
         onSubmit={ async (values, { setSubmitting , resetForm}) => {
-          console.log('entra');
+          
           setSubmitting(true);
          
             const {data}=  await Login({ variables: {

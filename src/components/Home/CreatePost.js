@@ -1,23 +1,35 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik'; 
-import {useQuery } from '@apollo/react-hooks';
+import {useQuery, useMutation } from '@apollo/react-hooks';
 import {QUERY_CATEGORY} from '../../helpers/graphql/querys/querys';
-import {MDBBtn} from 'mdbreact';
-import Spinner from './../spinner'
+import {CREATE_POST} from '../../helpers/graphql/mutations/mutations'
+import {MDBBtn, MDBIcon} from 'mdbreact';
+import Spinner from './../spinner';
+import UploadImage from '../uploadImage.js';
+import Error from '../Auth/Error';
 
 export default function Conversations({options , categories}) {
   const [urlImg , setUrlImg] = useState('');
   const { data , loading , error} = useQuery(QUERY_CATEGORY);
+  const [createPost , asda]  = useMutation(CREATE_POST);
+   const  [isLoad, setIsLoad] = useState(false);
+
+   const handlingLoadImage = (value) => {
+    setIsLoad(value);
+  }
+  const onImageUrl = (url) => {
+    setUrlImg(url);
+  } 
 
   const Categories = ({array}) => {
       
    return array.map((value, key)=> {
-   return <option key={key}> {value.name}</option>
+   return <option value={value.name} key={key}> {value.name}</option>
    })
 
   }
   return (
-  <section className={options===2? "create active": "create"}>
+  <section className={options===2? "create active scroll": "create scroll"}>
     <Formik
         initialValues={{ title: '' , category: ''  }}
         validate={(values) => {
@@ -65,18 +77,49 @@ export default function Conversations({options , categories}) {
           </div>
           <div className={values.category.length>0? "form-group not-empty ":"form-group"}> 
         
-          <select
-            className="form-control"
-            id="category"
-            name="category"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.category}
-             > {categories && <Categories array ={categories} /> }
-           </select>
-           <label className="animated-label" htmlFor="category"> Category </label>
+          <div className="select">
+          <select 
+          className="select-text"
+          id="category"
+          name="category"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.category}
+          required>
+						<option value="" disabled selected></option>
+            {categories && <Categories array ={categories} /> }
+					</select>
+					<span className="select-highlight"></span>
+					<span className="select-bar"></span>
+					<label className="select-label">Category</label>
+				</div>
          
           </div>
+          <div className="form-group"> 
+          {(urlImg.length>0 && !isLoad  )&& <MDBBtn htmlFor="uploadImagePost"  className="uploadImagePost" tag={(props)=> <label {...props} />} > 
+           <img src={urlImg} alt=""/>
+           
+           </MDBBtn> 
+            }
+            {(urlImg.length>0 &&  isLoad  )&& <MDBBtn htmlFor="uploadImagePost"  className="uploadImagePost" tag={(props)=> <label {...props} />} > 
+            <Spinner />
+           </MDBBtn> 
+            }
+             {(urlImg.length<=0 && isLoad) && <MDBBtn htmlFor="uploadImagePost"  className="uploadImagePost" tag={(props)=> <label {...props} />} > 
+               
+           <Spinner />
+            
+           </MDBBtn>   }
+           {(urlImg.length<=0 && !isLoad) && <MDBBtn htmlFor="uploadImagePost"  className="uploadImagePost" tag={(props)=> <label {...props} />} > 
+           <span> Load Image</span>
+               <MDBIcon icon="upload" /> 
+               </MDBBtn>   }
+
+               <UploadImage id="uploadImagePost" 
+            onImageUrl={onImageUrl} 
+            handlingLoadImage={handlingLoadImage}
+            />
+            </div>
          
          
           <MDBBtn className="btn-primary-color"  disabled={isSubmitting} type="submit">
