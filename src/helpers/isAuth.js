@@ -10,15 +10,13 @@ export default function IsAuth() {
     const [name, setName] = useState(null);
     const [userId, setUserId] = useState(null);
     const [urlImg, setUrlImg] = useState(null);
+    const [posts, setPosts] =useState([]);
     const {data, loading ,error , refetch} = useQuery(CURRENT_USER);
 
-    const login = (token, username ,name, userId, urlImg) => {
-        setToken(token);
-        setUsername(username);
-        setName(name);
-        setUserId(userId);
-        setUrlImg(urlImg);
+    const login = async (token) => {
         localStorage.setItem("token", token);
+        setToken(token);
+        refetch(); 
        }
      
        const updateUser = () => {
@@ -30,28 +28,35 @@ export default function IsAuth() {
         setName(null);
         setUserId(null);
         setUrlImg(null);
+        setPosts([]);
        localStorage.removeItem("token");
    
      }
 
      useEffect(() => {
-        const response = localStorage.getItem("token");
-        if (response && !loading && data ) {
-            if(!data.currentUser) {
-             logout();
-             return; 
-            }
-           console.log("recarga")
-            setToken(response);
+      if (!loading && data ) {
+          if(!data.currentUser) {
+           logout();
+           return; 
+          } 
+          getDataUser(); 
+          }
+         
+        
+        }, [token,data,loading]);
+        
+     useEffect(()=> {
+      const response = localStorage.getItem("token");
+      setToken(response)
+     },[])
+   
+      const getDataUser = () => {
             setUsername(data.currentUser.username); 
             setName(data.currentUser.name);
             setUserId(data.currentUser._id);
             setUrlImg(data.currentUser.urlImg);
-            console.log(data.currentUser.name)
-        }
-    
-      }, [data,loading]);
-
+            setPosts(data.currentUser.posts);
+      }
       return (
         <AuthContext.Provider
         value={{ 
@@ -62,6 +67,7 @@ export default function IsAuth() {
           name: name,
           userId:userId,
           logout: logout , 
+          posts:posts,
           updateUser: updateUser}}>
 
 

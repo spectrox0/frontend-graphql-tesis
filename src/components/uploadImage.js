@@ -17,8 +17,7 @@ export default function UploadImage({id, onImageUrl, handlingLoadImage}) {
           setProgress(progress);
         },
         (error) => {
-          console.log(error);
-          console.log("hola")
+  
           handlingLoadImage(false);
         }, () => {
           storage.ref('images').child(image.name).getDownloadURL().then(url => {
@@ -28,7 +27,6 @@ export default function UploadImage({id, onImageUrl, handlingLoadImage}) {
         });
       }
     } 
-    console.log(id)
     return (
         <>
         <input id={id} className="imageInput" type="file" onChange={onChangeImageUpload} />

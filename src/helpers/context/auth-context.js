@@ -6,6 +6,7 @@ export default createContext({
     urlImg: null,
     name:null, 
     userId: null , 
+    posts: [],
     login: (token, username ,name, userId, urlImg) => { },
     updateUser: () => {
     },

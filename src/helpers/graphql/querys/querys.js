@@ -8,6 +8,12 @@ export const CURRENT_USER = gql`
   name
   username
   urlImg
+  posts {
+    _id
+    title
+    date
+    urlImg
+  }
 }
 }
 `

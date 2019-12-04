@@ -40,11 +40,7 @@ export default function SignIn ({isSignIn}) {
             } } )
             if(data){ 
               login( 
-                data.login.token ,
-                data.login.username, 
-                data.login.name, 
-                data.login.userId,
-                data.login.urlImg
+                data.login.token 
               )
             }
             resetForm();

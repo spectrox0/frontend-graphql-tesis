@@ -37,18 +37,18 @@ export default function Settings({isOpen, toggle}) {
         initialValues={{ username: username, name: name ,password: '' }}
         validate={(values) => {
           var errors ={}
-          if(values.username.length>16)
-          errors.username ="No more 16 characters"
+          if(values.username.length>30)
+          errors.username ="No more 30 characters"
           if(values.username.length<=0) {
            errors.username="rellene el campo"
           }
-          if(values.name.length>16)
-          errors.name ="No more 16 characters"
+          if(values.name.length>30)
+          errors.name ="No more 30 characters"
           if(values.name.length<=0) {
            errors.name="rellene el campo"
           }
-          if(values.password.length>16)
-          errors.password ="No more 16 characters"
+          if(values.password.length>30)
+          errors.password ="No more 30 characters"
           if(values.password.length<=0) {
            errors.password="rellene el campo"
           }

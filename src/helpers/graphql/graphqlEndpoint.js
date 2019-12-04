@@ -11,7 +11,7 @@ const endpoint = 'https://api-graphql-tesis.herokuapp.com/graphql'
 
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({
- //uri: endpoint
+  //uri: endpoint
   uri: 'http://localhost:4000/graphql'
  
 });

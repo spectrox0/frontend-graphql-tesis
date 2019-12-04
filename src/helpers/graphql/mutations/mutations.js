@@ -2,7 +2,7 @@ import gql from 'graphql-tag' ;
 
 export const CREATE_USER = gql`
 mutation 
-createUser($userInput: UserInput) {
+createUser($userInput: UserInput!) {
   createUser(userInput: $userInput) {
     _id
   }
@@ -14,10 +14,6 @@ export const LOGIN = gql`
 mutation login($username: String!, $password:String!) {
   login(username: $username , password: $password) {
       token
-      userId
-      name
-      username
-      urlImg
   }
 }
 `
@@ -36,13 +32,16 @@ updateUser($userInput: UpdateUserInput!) {
 ` 
 export const CREATE_POST = gql`
 mutation 
-updateUser($userInput: UpdateUserInput!) {
-  updateUser(userInput: $userInput) {
+createPost($postInput: PostInput!) {
+  createPost(postInput: $postInput) {
+  title 
+  creator{
     _id
-    name 
-    username
-    urlImg 
+  }
+  _id
+  urlImg
   }
 }
+
 
 `
