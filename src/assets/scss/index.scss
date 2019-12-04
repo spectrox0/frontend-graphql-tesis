@@ -1,8 +1,6 @@
-
-
-  // imports 
- @import './variables.scss';
- body {
+// imports
+@import "./variables.scss";
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -12,25 +10,24 @@
   color: $color-font;
 }
 
+//components
+@import "./components/input.scss";
+@import "./components/button.scss";
+@import "./components/sidebar.scss";
+@import "./components/chat.scss";
+@import "./components/spinner.scss";
+@import "./components/settings.scss";
+@import "./components/scroll.scss";
+@import "./components/cardCategory.scss";
+@import "./components/select.scss";
+@import "./components/createPost.scss";
+@import "./components/cardPost.scss";
+//views
+@import "./views/Auth.scss";
+@import "/views/Home.scss";
 
- //components 
-@import './components/input.scss';
-@import './components/button.scss';
-@import './components/sidebar.scss';
-@import './components/chat.scss';
-@import './components/spinner.scss';
-@import './components/settings.scss';
-@import './components/scroll.scss';
-@import './components/cardCategory.scss';
-@import './components/select.scss';
-@import './components/createPost.scss';
-@import './components/cardPost.scss';
- //views 
- @import './views/Auth.scss';
- @import '/views/Home.scss';
+//responsive
 
- //responsive 
-
- @import './views/mobile/components/sidebars.scss';
- @import './views/mobile/components/chat.scss';
- @import './views/mobile/components/toggle.scss';
+@import "./views/mobile/components/sidebars.scss";
+@import "./views/mobile/components/chat.scss";
+@import "./views/mobile/components/toggle.scss";

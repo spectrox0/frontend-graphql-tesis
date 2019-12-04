@@ -1,41 +1,38 @@
-
-.btn-primary-color{
+.btn-primary-color {
+  background: $color-primary;
+  color: #ffffff;
+  border: none;
+  width: 6rem;
+  border-radius: 500px;
+  &:hover {
     background: $color-primary;
-    color: #FFFFFF;
-    border:none;
-    width: 6rem;
-    border-radius: 500px;
-    &:hover {
-        background: $color-primary;
-        outline: none;
-        color: #FFFFFF;
-        text-shadow: 0 0 2px #FFFFFF;
-        border: none;
-    }
-    &:focus {
-        background: $color-primary;
-        outline: none;
-        box-shadow: none;
-        opacity: .9;
-    }
-
+    outline: none;
+    color: #ffffff;
+    text-shadow: 0 0 2px #ffffff;
+    border: none;
+  }
+  &:focus {
+    background: $color-primary;
+    outline: none;
+    box-shadow: none;
+    opacity: 0.9;
+  }
 }
 .btn-send {
+  color: $color-primary;
+  border: none;
+  border-radius: 50%;
+  text-shadow: 0 0 3px $color-primary;
+  font-size: 1.8em;
+  &:hover {
     color: $color-primary;
-    border:none;
-    border-radius: 50%;
-    text-shadow: 0 0 3px $color-primary;
-    font-size: 1.8em;
-    &:hover {
-        color: $color-primary;
-    }
-    &:focus {
-       
-        outline: none;
-        box-shadow: none;
-        opacity: .9;
-    }
-    @media screen and (max-width:992px) {
-        font-size: 1.3em;
-    }
-    }
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    opacity: 0.9;
+  }
+  @media screen and (max-width: 992px) {
+    font-size: 1.3em;
+  }
+}

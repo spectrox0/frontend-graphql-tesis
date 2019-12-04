@@ -1,84 +1,74 @@
-import React, {useState, useEffect} from 'react' ; 
-import {CURRENT_USER} from './graphql/querys/querys'; 
-import {useQuery} from '@apollo/react-hooks';
-import AuthContext from './context/auth-context';
-import Routes from './routes/Routes';
+import React, { useState, useEffect } from "react";
+import { CURRENT_USER } from "./graphql/querys/querys";
+import { useQuery } from "@apollo/react-hooks";
+import AuthContext from "./context/auth-context";
+import Routes from "./routes/Routes";
 
 export default function IsAuth() {
-    const [token, setToken] = useState(null);
-    const [ username, setUsername] = useState(null);
-    const [name, setName] = useState(null);
-    const [userId, setUserId] = useState(null);
-    const [urlImg, setUrlImg] = useState(null);
-    const [posts, setPosts] =useState([]);
-    const {data, loading ,error , refetch} = useQuery(CURRENT_USER);
+  const [token, setToken] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [name, setName] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [urlImg, setUrlImg] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const { data, loading, error, refetch } = useQuery(CURRENT_USER);
 
-    const login = async (token) => {
-        localStorage.setItem("token", token);
-        setToken(token);
-        refetch(); 
-       }
-     
-       const updateUser = () => {
-        refetch();
-       }
-       const logout = () => {
-        setToken(null);
-        setUsername(null);
-        setName(null);
-        setUserId(null);
-        setUrlImg(null);
-        setPosts([]);
-       localStorage.removeItem("token");
-   
-     }
+  const login = async token => {
+    localStorage.setItem("token", token);
+    setToken(token);
+    refetch();
+  };
 
-     useEffect(() => {
-      if (!loading && data ) {
-          if(!data.currentUser) {
-           logout();
-           return; 
-          } 
-          getDataUser(); 
-          }
-         
-        
-        }, [token,data,loading]);
-        
-     useEffect(()=> {
-      const response = localStorage.getItem("token");
-      setToken(response)
-     },[])
-   
-      const getDataUser = () => {
-            setUsername(data.currentUser.username); 
-            setName(data.currentUser.name);
-            setUserId(data.currentUser._id);
-            setUrlImg(data.currentUser.urlImg);
-            setPosts(data.currentUser.posts);
+  const updateUser = () => {
+    refetch();
+  };
+  const logout = () => {
+    setToken(null);
+    setUsername(null);
+    setName(null);
+    setUserId(null);
+    setUrlImg(null);
+    setPosts([]);
+    localStorage.removeItem("token");
+  };
+
+  useEffect(() => {
+    if (!loading && data) {
+      if (!data.currentUser) {
+        logout();
+        return;
       }
-      return (
-        <AuthContext.Provider
-        value={{ 
-          token: token, 
-          urlImg: urlImg,
-           username: username,
-          login: login,
-          name: name,
-          userId:userId,
-          logout: logout , 
-          posts:posts,
-          updateUser: updateUser}}>
+      getDataUser();
+    }
+  }, [token, data, loading]);
 
+  useEffect(() => {
+    const response = localStorage.getItem("token");
+    setToken(response);
+  }, []);
 
-        {(!loading) &&  
-           <Routes isAuth={token} />   
-         
-      }
-           
-
-        
-      </AuthContext.Provider>
-      )
-
+  const getDataUser = () => {
+    setUsername(data.currentUser.username);
+    setName(data.currentUser.name);
+    setUserId(data.currentUser._id);
+    setUrlImg(data.currentUser.urlImg);
+    setPosts(data.currentUser.posts);
+  };
+  return (
+    <AuthContext.Provider
+      value={{
+        token: token,
+        urlImg: urlImg,
+        username: username,
+        login: login,
+        name: name,
+        userId: userId,
+        logout: logout,
+        posts: posts,
+        updateUser: updateUser
+      }}
+    >
+      {!loading && <Routes isAuth={token} />}
+    </AuthContext.Provider>
+  );
 }

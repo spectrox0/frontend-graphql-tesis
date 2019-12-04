@@ -1,49 +1,43 @@
 .cardPost {
-    background: rgba(255,255,255,.1);
+  background: rgba(255, 255, 255, 0.1);
 
-    .card-body {
-        display: flex;
-        justify-content: space-between;
-        padding:.7rem;
-        .imgPost {
-            border-radius: 50%;
-            width:4rem;
-            height: 4rem;
-    
-        } 
-        .colImg {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-         
-        }
-        .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            h3{
-                padding: 0;
-                margin:0;
-                margin-right: .3rem;;
-                display: inline-block;
-                font-size: 1.2em;
-            }
-            span {
-                font-size: .5em;
-            }
-        }
-    
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem;
+    .imgPost {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
     }
-    .content{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        p {
-            font-size: .7em;
-        }
-       
+    .colImg {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-
-  
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h3 {
+        padding: 0;
+        margin: 0;
+        margin-right: 0.3rem;
+        display: inline-block;
+        font-size: 1.2em;
+      }
+      span {
+        font-size: 0.5em;
+      }
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      font-size: 0.7em;
+    }
+  }
 }

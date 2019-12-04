@@ -1,99 +1,94 @@
-
 .form-group {
-    position: relative;
-    padding-top: 16px;
-    margin-bottom:  .4rem;
-    .animated-label {
+  position: relative;
+  padding-top: 16px;
+  margin-bottom: 0.4rem;
+  .animated-label {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    font-weight: 300;
+    opacity: 0.8;
+    cursor: text;
+    transition: 0.2s ease all;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    &:after {
+      content: "";
       position: absolute;
-      top: 20px;
-      left: 0;
       bottom: 0;
-      z-index: 2;
-      width: 100%;
-      font-weight: 300;
-      opacity: 0.8;
-      cursor: text;
+      left: 45%;
+      height: 2px;
+      width: 10px;
+      visibility: hidden;
+      background-color: $color-primary;
       transition: 0.2s ease all;
-      margin: 0;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 45%;
-        height: 2px;
-        width: 10px;
-        visibility: hidden;
-        background-color:$color-primary; 
-        transition: 0.2s ease all;
+    }
+  }
+  &.not-empty {
+    .animated-label {
+      top: 0;
+      font-size: 12px;
+    }
+  }
+  .form-control {
+    position: relative;
+    z-index: 1;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    border-bottom-color: rgba($color-primary, 0.35);
+    height: auto;
+    padding: 3px 0 5px;
+    color: $color-font;
+    background: transparent;
+    &:focus {
+      box-shadow: none;
+      border-bottom-color: rgba($color-primary, 0.22);
+      ~ .animated-label {
+        top: 0;
+        opacity: 1;
+        color: $color-primary;
+        font-size: 12px;
+        &:after {
+          visibility: visible;
+          width: 100%;
+          left: 0;
+        }
       }
     }
-    &.not-empty {
-      .animated-label {
-        top: 0;
-        font-size: 12px;
-      }
+  }
+  &.form-icon {
+    i {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      top: 1.2rem;
+      left: 0.2rem;
+      color: $color-primary;
+      color: white;
+      opacity: 0.8;
+      font-size: 1.4rem;
+      transition: 0.2s all ease;
     }
     .form-control {
-      position: relative;
-      z-index: 1;
-      border-radius: 0;
-      border-width: 0 0 1px;
-      border-bottom-color: rgba($color-primary,0.35);
-      height: auto;
-      padding: 3px 0 5px;
-      color:$color-font;
-      background: transparent;
+      padding-left: 1.4rem;
       &:focus {
-        box-shadow: none;
-        border-bottom-color: rgba($color-primary,0.22);
-        ~ .animated-label {
-          top: 0;
-          opacity: 1;
+        ~ i {
           color: $color-primary;
-          font-size: 12px;
-          &:after {
-            visibility: visible;
-            width: 100%;
-            left: 0;
-          }
+          text-shadow: 0 0 2px $color-primary;
         }
       }
     }
-    &.form-icon{
-      i {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: absolute;
-        top:1.2rem;
-        left:.2rem;
-        color: $color-primary;
-        color:white;
-        opacity: 0.8;
-        font-size: 1.4rem;
-        transition: .2s all ease;
-       
-      }
-      .form-control {
-        padding-left: 1.4rem;
-        &:focus {
-          ~i {
-            color: $color-primary;
-            text-shadow: 0 0 2px $color-primary;
-          }
-        }
-      }
-      .animated-label{
-        left: 1.4rem;
-      } 
-
-
-
+    .animated-label {
+      left: 1.4rem;
     }
   }
-  .imageInput{
-    display: none;
-  }
+}
+.imageInput {
+  display: none;
+}

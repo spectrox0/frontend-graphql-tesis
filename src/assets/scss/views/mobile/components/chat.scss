@@ -1,29 +1,24 @@
 .chat {
-    transition: .3s ease all;
-    @media screen and (max-width:992px) {
-        margin-left: 0;
-        .messages {
-            height: calc(100vh - (7rem));
-        }
+  transition: 0.3s ease all;
+  @media screen and (max-width: 992px) {
+    margin-left: 0;
+    .messages {
+      height: calc(100vh - (7rem));
     }
-    .navbar {
-        .nav-item {
-            .btn {
-                &:focus {
-                    outline: none;
-                    box-shadow: none;
-                }
-                i {
-                       opacity: .9;
-                        font-size: 1.3em;
-                        color: $color-primary;
-                   
-                }
-            }
+  }
+  .navbar {
+    .nav-item {
+      .btn {
+        &:focus {
+          outline: none;
+          box-shadow: none;
         }
-        @media screen and (min-width:991px) {
-            display: none;
+        i {
+          opacity: 0.9;
+          font-size: 1.3em;
+          color: $color-primary;
         }
+      }
     }
-   
+  }
 }

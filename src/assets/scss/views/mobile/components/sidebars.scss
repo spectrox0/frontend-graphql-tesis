@@ -1,70 +1,46 @@
-
- .sideBar {
-     @media screen and (max-width:992px) {
-         z-index: 2;
-         transform: translateX(-100%);
-          transition: .3s all ease-in-out;
-         &.isOpen {
-            transform: translateX(0);
-
-         }
-         footer {
-           
-        
-            .imgProfile{
-                width: 6rem;
-                height: 6rem;
-            }
-            .username {
-              
-                font-size: .8em;
-               
-            }
-            .name {
-               
-                font-size: 1.1em;
-               
-    
-            }
-            .options{
-               
-                i {
-                    font-size: 1.8rem;
-                }
-                
-            }
+.sideBar {
+  @media screen and (max-width: 992px) {
+    z-index: 2;
+    transform: translateX(-100%);
+    transition: 0.3s all ease-in-out;
+    &.isOpen {
+      transform: translateX(0);
+    }
+    footer {
+      .imgProfile {
+        width: 6rem;
+        height: 6rem;
+      }
+      .username {
+        font-size: 0.8em;
+      }
+      .name {
+        font-size: 1.1em;
+      }
+      .options {
+        i {
+          font-size: 1.8rem;
         }
-     }
+      }
+    }
+  }
 
-     @media screen and (max-width:768px) {
-         nav {
-             font-size: .9em;
-         }
-        footer {
-           
-        
-            
-            .username {
-              
-                font-size: .7em;
-               
-            }
-            .name {
-               
-                font-size: 1em;
-               
-    
-            }
-            .options{
-               
-                i {
-                    font-size: 1.6rem;
-                }
-                
-            }
+  @media screen and (max-width: 768px) {
+    nav {
+      font-size: 0.9em;
+    }
+    footer {
+      .username {
+        font-size: 0.7em;
+      }
+      .name {
+        font-size: 1em;
+      }
+      .options {
+        i {
+          font-size: 1.6rem;
         }
-     
-     }
-   
-     
- }
+      }
+    }
+  }
+}
