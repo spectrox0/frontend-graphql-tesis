@@ -23,6 +23,7 @@ export default function IsAuth() {
     refetch();
   };
   const logout = () => {
+    console("hola");
     setToken(null);
     setUsername(null);
     setName(null);
@@ -40,7 +41,7 @@ export default function IsAuth() {
       }
       getDataUser();
     }
-  }, [token, data, loading]);
+  }, [token, data, loading, getDataUser]);
 
   useEffect(() => {
     const response = localStorage.getItem("token");
