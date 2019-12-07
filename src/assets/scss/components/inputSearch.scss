@@ -19,12 +19,12 @@
     &.active {
       outline: none;
       width: 80%;
-
+      padding-right: 1.5rem;
       opacity: 1;
       ~ label {
-        transform: rotate(20deg);
+        transform: translateX(-1.2rem);
         i {
-          transform: scale(1.08);
+          transform: rotate(380deg) scale(1.08);
           text-shadow: 0 0 1px #ffffff;
         }
       }
@@ -42,6 +42,12 @@
     border-radius: 50%;
     transition: 0.5s all linear;
     cursor: pointer;
+    i {
+      transition: 0.5s all linear;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
     &:active {
       opacity: 0.8;
     }

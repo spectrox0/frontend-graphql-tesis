@@ -10,6 +10,7 @@ export default function Conversations(props) {
         type="text"
         {...props}
       />
+
       <label className={props.value ? "active" : null} for="search">
         {" "}
         <MDBIcon icon="search" />{" "}
