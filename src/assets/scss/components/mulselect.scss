@@ -1,0 +1,89 @@
+.selectSearch {
+  .Select__menu {
+    background: transparent;
+    color: #ffffff;
+  }
+  .Select__multi-value {
+    background: rgba($color-primary, 0.8);
+    border-radius: 500px;
+    box-shadow: 0 0 2px $color-primary;
+    .Select__multi-value__label {
+      color: #ffffff;
+    }
+    .Select__multi-value__remove {
+      border-radius: 00 500px 500px 0;
+      color: #ffffff;
+      transition: all 0.2s linear;
+      &:hover {
+        background: $background-color;
+        opacity: 0.8;
+        box-shadow: 0 0 2px $background-color;
+      }
+    }
+  }
+
+  .Select__option {
+    color: #ffffff;
+    &.Select__option--is-focused {
+      background: rgba($color-primary, 0.7);
+      box-shadow: 0 0 2px $color-primary;
+    }
+  }
+  .Select__value-label {
+    background: red;
+  }
+  .Select__indicators {
+  }
+  .Select__control {
+    &.Select__control--is-focused {
+      border: none;
+      box-shadow: none;
+      box-sizing: border-box;
+      &:after {
+        width: 100%;
+        margin: 0;
+        opacity: 1;
+        box-shadow: 0 0 2px $color-primary;
+      }
+      .Select__dropdown-indicator {
+        transform: rotate(180deg);
+      }
+    }
+    &.Select__control--is-disabled {
+      opacity: 0.7;
+    }
+  }
+
+  .Select__input {
+    color: #ffffff;
+  }
+
+  .Select__dropdown-indicator {
+    color: $color-primary;
+    transition: transform 0.2s linear;
+  }
+
+  .Select__loading-indicator {
+    color: $color-primary;
+  }
+  .Select__clear-indicator {
+    color: $color-primary;
+  }
+
+  .Select__control {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    &:after {
+      content: "";
+      transition: all 0.3s ease-in-out;
+      width: 0;
+      opacity: 0;
+      margin-left: 50%;
+      margin-right: 50%;
+      height: 1px;
+      background: $color-primary;
+    }
+  }
+}

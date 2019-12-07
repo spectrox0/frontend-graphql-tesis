@@ -5,15 +5,24 @@ import Chat from "../components/Home/Chat.js";
 
 export default function Auth() {
   const [isOpenSideBar, setIsOpenSideBar] = useState(false);
+  const [postId, setPostId] = useState();
 
   const onClick = () => {
     setIsOpenSideBar(!isOpenSideBar);
   };
 
+  const changePost = idPost => {
+    setPostId(idPost);
+  };
   return (
     <div className="Home">
-      <SideBar onClick={onClick} isOpenSideBar={isOpenSideBar} />
-      <Chat onClick={onClick} />
+      <SideBar
+        onClick={onClick}
+        isOpenSideBar={isOpenSideBar}
+        changePost={changePost}
+        postId={postId}
+      />
+      <Chat onClick={onClick} postId={postId} />
     </div>
   );
 }

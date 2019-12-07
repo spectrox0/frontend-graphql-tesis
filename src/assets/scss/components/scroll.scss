@@ -1,4 +1,5 @@
 .scroll {
+  overflow: hidden;
   overflow-y: scroll;
   scrollbar-color: $color-primary transparent;
   display: none;

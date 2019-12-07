@@ -1,14 +1,32 @@
 .cardPost {
-  background: rgba(255, 255, 255, 0.1);
-
+  background: transparent;
+  width: 100%;
+  margin: 0;
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+  opacity: 0.9;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+  }
+  &.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  }
   .card-body {
     display: flex;
     justify-content: space-between;
-    padding: 0.7rem;
+    padding: 0;
     .imgPost {
       border-radius: 50%;
-      width: 4rem;
-      height: 4rem;
+      width: 3rem;
+      height: 3rem;
     }
     .colImg {
       display: flex;
@@ -23,12 +41,12 @@
       h3 {
         padding: 0;
         margin: 0;
-        margin-right: 0.3rem;
         display: inline-block;
-        font-size: 1.2em;
+        font-size: 0.9em;
       }
       span {
         font-size: 0.5em;
+        margin-right: 0.8rem;
       }
     }
   }
@@ -36,6 +54,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-bottom: solid 1.5px rgba($color-primary, 0.8);
     p {
       font-size: 0.7em;
     }

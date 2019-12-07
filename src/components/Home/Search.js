@@ -1,9 +1,10 @@
 import React from "react";
 import CardCategories from "../Cards/CardCategory";
+import HeaderSearch from "./HeaderSearch";
 export default function Conversations({ options, categories }) {
   const Cards = ({ categories }) =>
     categories.map((category, key) => (
-      <CardCategories key={key} name={category.name.replace("_", " ")} />
+      <CardCategories key={key} name={category.replace("_", " ")} />
     ));
   return (
     <section
@@ -11,7 +12,7 @@ export default function Conversations({ options, categories }) {
         options === 1 ? "categories active scroll" : "categories scroll"
       }
     >
-      {categories && <Cards categories={categories} />}
+      <HeaderSearch categories={categories} />
     </section>
   );
 }

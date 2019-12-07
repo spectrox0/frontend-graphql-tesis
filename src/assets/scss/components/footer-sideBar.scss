@@ -1,0 +1,35 @@
+footer {
+  height: 8rem;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 1rem;
+
+  .imgProfile {
+    position: relative;
+    top: -1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+  }
+  .username {
+    color: $color-primary;
+    font-size: 0.9em;
+    margin: 0;
+    width: 100%;
+  }
+  .name {
+    margin: 0;
+    width: 100%;
+    font-size: 1.2em;
+    text-transform: capitalize;
+  }
+  .options {
+    display: flex;
+    justify-content: flex-end;
+    i {
+      font-size: 2rem;
+    }
+  }
+}

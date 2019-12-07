@@ -1,0 +1,14 @@
+.sideBar {
+  header {
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+
+    h1 {
+      font-size: 2em;
+    }
+  }
+}

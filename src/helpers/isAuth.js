@@ -23,7 +23,6 @@ export default function IsAuth() {
     refetch();
   };
   const logout = () => {
-    console("hola");
     setToken(null);
     setUsername(null);
     setName(null);
@@ -34,27 +33,20 @@ export default function IsAuth() {
   };
 
   useEffect(() => {
-    if (!loading && data) {
-      if (!data.currentUser) {
-        logout();
-        return;
-      }
-      getDataUser();
+    if (data && data.currentUser && !loading) {
+      const response = localStorage.getItem("token");
+      setUsername(data.currentUser.username);
+      setName(data.currentUser.name);
+      setUserId(data.currentUser._id);
+      setUrlImg(data.currentUser.urlImg);
+      setPosts(data.currentUser.posts);
+      setToken(response);
+    } else if (error && localStorage.getItem("token")) {
+      logout();
+      return;
     }
-  }, [token, data, loading, getDataUser]);
+  }, [token, loading, error, data]);
 
-  useEffect(() => {
-    const response = localStorage.getItem("token");
-    setToken(response);
-  }, []);
-
-  const getDataUser = () => {
-    setUsername(data.currentUser.username);
-    setName(data.currentUser.name);
-    setUserId(data.currentUser._id);
-    setUrlImg(data.currentUser.urlImg);
-    setPosts(data.currentUser.posts);
-  };
   return (
     <AuthContext.Provider
       value={{
@@ -69,7 +61,7 @@ export default function IsAuth() {
         updateUser: updateUser
       }}
     >
-      {!loading && <Routes isAuth={token} />}
+      {!loading && <Routes isAuth={data ? token : null} />}
     </AuthContext.Provider>
   );
 }

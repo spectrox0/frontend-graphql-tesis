@@ -1,0 +1,34 @@
+.inputMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $background-sideBar;
+  padding: 0;
+  margin: 0;
+  height: 4rem;
+  input {
+    width: 85%;
+    margin: 0;
+    height: auto;
+    padding: 0.3rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: $color-font;
+    border: none;
+    border-radius: 500px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    padding-left: 2rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    input {
+      width: 75%;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    input {
+      width: 65%;
+    }
+  }
+}

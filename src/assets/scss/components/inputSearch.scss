@@ -1,0 +1,49 @@
+.searchInput {
+  display: flex;
+  height: 3rem;
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 500px;
+
+  input {
+    padding: 0;
+    border: none;
+    background: none;
+    width: 0;
+    color: #ffffff;
+    line-height: 2.5rem;
+    opacity: 0;
+    border-bottom: 1.5px solid $color-primary;
+    transition: 0.5s all linear;
+    &:focus,
+    &.active {
+      outline: none;
+      width: 80%;
+
+      opacity: 1;
+      ~ label {
+        transform: rotate(20deg);
+        i {
+          transform: scale(1.08);
+          text-shadow: 0 0 1px #ffffff;
+        }
+      }
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    background: $color-primary;
+    box-shadow: 0 0 3px $color-primary;
+    width: 2.5rem;
+    border-radius: 50%;
+    transition: 0.5s all linear;
+    cursor: pointer;
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}

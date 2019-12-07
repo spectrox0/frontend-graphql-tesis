@@ -26,9 +26,9 @@ export default function Conversations({ options, categories }) {
   const Categories = ({ array }) => {
     return array.map((value, key) => {
       return (
-        <option value={value.name} key={key}>
+        <option value={value} key={key}>
           {" "}
-          {value.name.replace("_", "")}
+          {value.replace("_", "")}
         </option>
       );
     });

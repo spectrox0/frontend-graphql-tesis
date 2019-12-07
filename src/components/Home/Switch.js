@@ -1,6 +1,6 @@
 import React from "react";
 import Conversation from "./Conversations";
-import Categories from "./Categories";
+import Search from "./Search";
 import CreatePost from "./CreatePost";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_CATEGORY } from "../../helpers/graphql/querys/querys";
@@ -12,8 +12,19 @@ export default function Switch(props) {
     <div className="scrollbar" id="style-2">
       <div className="switch">
         <Conversation {...props} />
-        <Categories {...props} categories={data && data.__type.enumValues} />
-        <CreatePost {...props} categories={data && data.__type.enumValues} />
+        <Search
+          {...props}
+          categories={
+            data &&
+            data.__type.enumValues.map(e => {
+              return { value: e.name, label: e.name.replace("_", " ") };
+            })
+          }
+        />
+        <CreatePost
+          {...props}
+          categories={data && data.__type.enumValues.map(e => e.name)}
+        />
       </div>
     </div>
   );

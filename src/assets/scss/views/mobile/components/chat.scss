@@ -1,10 +1,6 @@
 .chat {
-  transition: 0.3s ease all;
   @media screen and (max-width: 992px) {
     margin-left: 0;
-    .messages {
-      height: calc(100vh - (7rem));
-    }
   }
   .navbar {
     .nav-item {
