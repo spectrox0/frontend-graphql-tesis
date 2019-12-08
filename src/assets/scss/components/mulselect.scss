@@ -1,6 +1,6 @@
 .selectSearch {
   .Select__menu {
-    background: transparent;
+    background: $background-sideBar;
     color: #ffffff;
   }
   .Select__multi-value {
@@ -29,11 +29,7 @@
       box-shadow: 0 0 2px $color-primary;
     }
   }
-  .Select__value-label {
-    background: red;
-  }
-  .Select__indicators {
-  }
+
   .Select__control {
     &.Select__control--is-focused {
       border: none;

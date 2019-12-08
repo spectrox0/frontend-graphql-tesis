@@ -19,9 +19,10 @@ export const CURRENT_USER = gql`
 
 export const QUERY_CATEGORY = gql`
   {
-    __type(name: "category") {
+    __type(name: "Category") {
       enumValues {
         name
+        description
       }
     }
   }
@@ -33,14 +34,37 @@ export const QUERY_POST = gql`
       title
       urlImg
       messages {
+        _id
         content
         date
         user {
+          _id
           username
           name
           urlImg
         }
       }
+    }
+  }
+`;
+
+export const QUERY_SEARCH_POST = gql`
+  query searchPost(
+    $first: Int!
+    $after: Int!
+    $categories: [Category!]!
+    $word: String!
+  ) {
+    searchPost(
+      first: $first
+      after: $after
+      categories: $categories
+      word: $word
+    ) {
+      _id
+      title
+      date
+      urlImg
     }
   }
 `;

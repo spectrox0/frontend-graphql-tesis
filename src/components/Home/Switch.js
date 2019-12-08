@@ -9,23 +9,26 @@ export default function Switch(props) {
   const { data, loading, error } = useQuery(QUERY_CATEGORY);
 
   return (
-    <div className="scrollbar" id="style-2">
-      <div className="switch">
-        <Conversation {...props} />
-        <Search
-          {...props}
-          categories={
-            data &&
-            data.__type.enumValues.map(e => {
-              return { value: e.name, label: e.name.replace("_", " ") };
-            })
-          }
-        />
-        <CreatePost
-          {...props}
-          categories={data && data.__type.enumValues.map(e => e.name)}
-        />
-      </div>
+    <div className="switch">
+      <Conversation {...props} />
+      <Search
+        {...props}
+        categories={
+          data &&
+          data.__type.enumValues.map(e => {
+            return { value: e.name, label: e.description };
+          })
+        }
+      />
+      <CreatePost
+        {...props}
+        categories={
+          data &&
+          data.__type.enumValues.map(e => {
+            return { value: e.name, label: e.description };
+          })
+        }
+      />
     </div>
   );
 }

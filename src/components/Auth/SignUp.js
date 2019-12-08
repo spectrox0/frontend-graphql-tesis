@@ -7,6 +7,7 @@ import AuthContext from "../../helpers/context/auth-context";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN, CREATE_USER } from "../../helpers/graphql/mutations/mutations";
 import Error from "./Error.js";
+import { useAlert } from "react-alert";
 export default function SignIn({ isSignIn }) {
   const { login } = useContext(AuthContext);
   const [urlImg, setUrlImg] = useState("");
@@ -19,6 +20,7 @@ export default function SignIn({ isSignIn }) {
   const onImageUrl = url => {
     setUrlImg(url);
   };
+  const alert = useAlert();
   return (
     <Formik
       initialValues={{
@@ -65,33 +67,37 @@ export default function SignIn({ isSignIn }) {
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(true);
-        const res = await createUser({
-          variables: {
-            userInput: {
-              email: values.email,
-              password: values.password,
-              name: values.name,
-              urlImg: urlImg,
-              username: values.username
-            }
-          }
-        });
-        if (res.data) {
-          const { data } = await Login({
+        try {
+          const res = await createUser({
             variables: {
-              username: values.username,
-              password: values.password
+              userInput: {
+                email: values.email,
+                password: values.password,
+                name: values.name,
+                urlImg: urlImg,
+                username: values.username
+              }
             }
           });
-          if (data) {
-            login(
-              data.login.token,
-              data.login.username,
-              data.login.name,
-              data.login.userId,
-              data.login.urlImg
-            );
+          if (res.data) {
+            const { data } = await Login({
+              variables: {
+                username: values.username,
+                password: values.password
+              }
+            });
+            if (data) {
+              login(
+                data.login.token,
+                data.login.username,
+                data.login.name,
+                data.login.userId,
+                data.login.urlImg
+              );
+            }
           }
+        } catch (err) {
+          alert.error("ERROR");
         }
         setSubmitting(true);
       }}

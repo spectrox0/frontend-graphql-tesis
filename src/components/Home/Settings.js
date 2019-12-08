@@ -19,7 +19,6 @@ export default function Settings({ isOpen, toggle }) {
   const [isLoad, setIsLoad] = useState(false);
 
   React.useEffect(() => {
-    console.log("ejecuta");
     setUrlImg(urlImg);
   }, [urlImg]);
   const handlingLoadImage = value => {

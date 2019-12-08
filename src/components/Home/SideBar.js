@@ -27,7 +27,12 @@ export default function SideBar({
           <Header onClick={onClick} />
           <Menu options={options} changeOption={changeOption} />
         </div>
-        <Switch options={options} changePost={changePost} postId={postId} />
+        <Switch
+          options={options}
+          changeOption={changeOption}
+          changePost={changePost}
+          postId={postId}
+        />
         <InfoUser toggle={openSettings} />
         <Settings toggle={openSettings} isOpen={isOpenSettings} />
       </div>{" "}

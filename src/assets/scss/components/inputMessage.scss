@@ -1,15 +1,29 @@
 .inputMessage {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  width: 100%;
   align-items: center;
   background: $background-sideBar;
-  padding: 0;
+  padding: 0 1rem 0 1rem;
   margin: 0;
   height: 4rem;
-  input {
-    width: 85%;
+  form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .spinner-border {
     margin: 0;
-    height: auto;
+    padding: 0;
+    margin-left: 2rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  input {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0;
+    height: 3rem;
     padding: 0.3rem;
     background: rgba(0, 0, 0, 0.5);
     color: $color-font;
@@ -19,16 +33,6 @@
     padding-left: 2rem;
     &:focus {
       outline: none;
-    }
-  }
-  @media screen and (max-width: 768px) {
-    input {
-      width: 75%;
-    }
-  }
-  @media screen and (max-width: 576px) {
-    input {
-      width: 65%;
     }
   }
 }

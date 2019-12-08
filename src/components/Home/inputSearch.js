@@ -11,7 +11,7 @@ export default function Conversations(props) {
         {...props}
       />
 
-      <label className={props.value ? "active" : null} for="search">
+      <label className={props.value ? "active" : null} htmlFor="search">
         {" "}
         <MDBIcon icon="search" />{" "}
       </label>

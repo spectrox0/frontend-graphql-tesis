@@ -17,8 +17,11 @@
     "mdbreact": "^4.23.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
+    "react-alert": "^6.0.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.2.0",
+    "react-scroll": "^1.7.14",
     "react-select": "^3.0.8",
     "subscriptions-transport-ws": "^0.9.16"
   },

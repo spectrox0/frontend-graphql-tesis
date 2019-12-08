@@ -6,14 +6,19 @@
 
   .messages,
   .initMessage {
-    height: calc(100vh - (8rem));
     padding: 1rem;
+    min-width: 100%;
     background: rgb(56, 56, 56);
+    height: calc(100vh - (8rem));
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
   }
   .initMessage {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .messages {
+    display: flex;
+    flex-direction: column;
   }
 }

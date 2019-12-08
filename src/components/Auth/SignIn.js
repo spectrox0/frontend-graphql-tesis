@@ -4,13 +4,12 @@ import { Formik } from "formik";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "../../helpers/graphql/mutations/mutations";
-import Error from "./Error.js";
 import Spinner from "../spinner.js";
-
+import { useAlert } from "react-alert";
 export default function SignIn({ isSignIn }) {
   const [Login, { data, loading, error }] = useMutation(LOGIN);
   const { login } = useContext(AuthContext);
-
+  const alert = useAlert();
   return (
     <Formik
       initialValues={{ username: "", password: "" }}
@@ -29,15 +28,18 @@ export default function SignIn({ isSignIn }) {
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(true);
-
-        const { data } = await Login({
-          variables: {
-            username: values.username,
-            password: values.password
+        try {
+          const { data } = await Login({
+            variables: {
+              username: values.username,
+              password: values.password
+            }
+          });
+          if (data) {
+            login(data.login.token);
           }
-        });
-        if (data) {
-          login(data.login.token);
+        } catch (err) {
+          alert.error("Error");
         }
         resetForm();
         setSubmitting(false);

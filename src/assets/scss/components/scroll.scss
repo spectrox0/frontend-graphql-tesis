@@ -2,9 +2,6 @@
   overflow: hidden;
   overflow-y: scroll;
   scrollbar-color: $color-primary transparent;
-  display: none;
-  &.active {
-  }
 }
 .scroll::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -14,7 +11,7 @@
 }
 
 .scroll::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 .scroll::-webkit-scrollbar-thumb {

@@ -27,14 +27,32 @@ export const UPDATE_USER = gql`
   }
 `;
 export const CREATE_POST = gql`
-  mutation createPost($postInput: PostInput!) {
-    createPost(postInput: $postInput) {
+  mutation createPost($postInput: PostInput!, $contentMessage: String!) {
+    createPost(postInput: $postInput, contentMessage: $contentMessage) {
       title
       creator {
         _id
       }
       _id
       urlImg
+    }
+  }
+`;
+
+export const CREATE_MESSAGE = gql`
+  mutation createMessage($messageInput: MessageInput!) {
+    createMessage(messageInput: $messageInput) {
+      _id
+      content
+      user {
+        _id
+        urlImg
+        username
+      }
+      date
+      post {
+        _id
+      }
     }
   }
 `;

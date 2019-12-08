@@ -26,7 +26,7 @@ export default function CardPost({
   };
   return (
     <Card
-      className={"cardPost " + (postId == _id ? "active" : "")}
+      className={"cardPost " + (postId === _id ? "active" : "")}
       onClick={() => changePost(_id)}
     >
       <Body>

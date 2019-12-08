@@ -9,7 +9,7 @@ import UploadImage from "../uploadImage.js";
 import Error from "../Auth/Error";
 import AuthContext from "../../helpers/context/auth-context";
 
-export default function Conversations({ options, categories }) {
+export default function Conversations({ options, categories, changeOption }) {
   const { userId } = useContext(AuthContext);
   const [urlImg, setUrlImg] = useState("");
   const { data, loading, error } = useQuery(QUERY_CATEGORY);
@@ -26,9 +26,9 @@ export default function Conversations({ options, categories }) {
   const Categories = ({ array }) => {
     return array.map((value, key) => {
       return (
-        <option value={value} key={key}>
+        <option value={value.value} key={key}>
           {" "}
-          {value.replace("_", "")}
+          {value.label}
         </option>
       );
     });
@@ -38,7 +38,7 @@ export default function Conversations({ options, categories }) {
       className={options === 2 ? "create active scroll" : "create scroll"}
     >
       <Formik
-        initialValues={{ title: "", category: "" }}
+        initialValues={{ title: "", category: "", message: "" }}
         validate={values => {
           var errors = {};
           if (values.title.trim().length < 4) {
@@ -46,8 +46,14 @@ export default function Conversations({ options, categories }) {
           } else if (values.title.trim().length > 50) {
             errors.title = "No more of 50 characters";
           }
-          if (values.category.length === 0) {
+          if (!values.category || values.category.length === 0) {
             errors.category = "select category please";
+          }
+          if (values.message.trim().length > 255) {
+            errors.message = "No more of 255 characters";
+          }
+          if (values.message.trim().length < 4) {
+            errors.message = "More of 4 character";
           }
           if (!userId) {
             errors.user = "Need auth";
@@ -56,17 +62,21 @@ export default function Conversations({ options, categories }) {
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          createPost({
+          await createPost({
             variables: {
               postInput: {
                 title: values.title,
                 category: values.category,
                 creator: userId,
                 urlImg: urlImg
-              }
+              },
+              contentMessage: values.message
             }
           });
-          resetForm();
+          if (data) {
+            resetForm();
+            changeOption(0);
+          }
           setSubmitting(false);
         }}
       >
@@ -102,7 +112,7 @@ export default function Conversations({ options, categories }) {
                       name="title"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.username}
+                      value={values.title}
                     />
                     <label className="animated-label" htmlFor="title">
                       {" "}
@@ -132,6 +142,30 @@ export default function Conversations({ options, categories }) {
                     </div>
                   </div>
                   <Error touched={touched.category} message={errors.category}>
+                    {" "}
+                  </Error>
+                  <div
+                    className={
+                      values.message.length > 0
+                        ? "form-group not-empty"
+                        : "form-group"
+                    }
+                  >
+                    <textarea
+                      className="form-control"
+                      id="message"
+                      type="text"
+                      name="message"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.message}
+                    />
+                    <label className="animated-label" htmlFor="message">
+                      {" "}
+                      Message{" "}
+                    </label>
+                  </div>
+                  <Error touched={touched.message} message={errors.message}>
                     {" "}
                   </Error>
                   <div className="form-group">
