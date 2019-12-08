@@ -10,7 +10,8 @@ export default function Conversations({
   options,
   categories,
   changePost,
-  postId
+  postId,
+  closeSideBar
 }) {
   const [categoriesSelected, setCatetories] = useState([]);
   const [search, setSearch] = useState("");
@@ -38,6 +39,7 @@ export default function Conversations({
         key={post._id}
         changePost={changePost}
         postId={postId}
+        closeSideBar={closeSideBar}
       />
     ));
 

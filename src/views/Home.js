@@ -4,13 +4,15 @@ import SideBar from "../components/Home/SideBar.js";
 import Chat from "../components/Home/Chat.js";
 
 export default function Auth() {
-  const [isOpenSideBar, setIsOpenSideBar] = useState(false);
+  const [isOpenSideBar, setIsOpenSideBar] = useState(true);
   const [postId, setPostId] = useState();
 
   const onClick = () => {
     setIsOpenSideBar(!isOpenSideBar);
   };
-
+  const closeSideBar = () => {
+    if (isOpenSideBar) setIsOpenSideBar(false);
+  };
   const changePost = idPost => {
     setPostId(idPost);
   };
@@ -18,6 +20,7 @@ export default function Auth() {
     <div className="Home">
       <SideBar
         onClick={onClick}
+        closeSideBar={closeSideBar}
         isOpenSideBar={isOpenSideBar}
         changePost={changePost}
         postId={postId}

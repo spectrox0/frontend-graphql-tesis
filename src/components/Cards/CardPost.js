@@ -14,7 +14,8 @@ export default function CardPost({
   urlImg,
   lastMessage,
   changePost,
-  postId
+  postId,
+  closeSideBar
 }) {
   const options = {
     timeZone: "UTC",
@@ -27,7 +28,10 @@ export default function CardPost({
   return (
     <Card
       className={"cardPost " + (postId === _id ? "active" : "")}
-      onClick={() => changePost(_id)}
+      onClick={() => {
+        changePost(_id);
+        closeSideBar();
+      }}
     >
       <Body>
         <Col className="colImg">

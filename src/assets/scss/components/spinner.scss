@@ -1,10 +1,7 @@
-.spinner-border {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
+.spinner-grow {
   width: 5rem;
-  color: $color-primary;
+  margin: 1rem;
+  background: $color-primary;
   font-weight: 900;
   height: 5rem;
 }

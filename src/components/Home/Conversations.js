@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import CardPost from "./../Cards/CardPost";
 import AuthContext from "../../helpers/context/auth-context";
-export default function Conversations({ options, changePost, postId }) {
+export default function Conversations({
+  options,
+  changePost,
+  postId,
+  closeSideBar
+}) {
   const { posts } = useContext(AuthContext);
   const Posts = () => {
     return posts.map(post => (
@@ -9,6 +14,7 @@ export default function Conversations({ options, changePost, postId }) {
         changePost={changePost}
         postId={postId}
         key={post._id}
+        closeSideBar={closeSideBar}
         {...post}
       />
     ));
