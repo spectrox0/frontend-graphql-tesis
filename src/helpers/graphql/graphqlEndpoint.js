@@ -8,15 +8,14 @@ import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 
 const endpoint = "https://api-graphql-tesis.herokuapp.com/graphql";
-
+const endpointWs = "wss://api-graphql-tesis.herokuapp.com/graphql";
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({
-  //uri: endpoint
-  uri: "https://api-graphql-tesis.herokuapp.com/graphql"
+  uri: endpoint
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://api-graphql-tesis.herokuapp.com/graphql`,
+  uri: endpointWs,
   options: {
     reconnect: true,
     connectionParams: {

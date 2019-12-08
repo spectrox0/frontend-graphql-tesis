@@ -3,9 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+  background: rgba(#ffffff, 0.1);
+  box-shadow: 0 0 3px rgba(#000000, 0.5);
   max-width: 40rem;
+  min-width: 40%;
   border: none;
   border-radius: 0;
   padding: 0;
@@ -17,7 +18,7 @@
 
     width: 100%;
     background: $color-primary;
-    box-shadow: 0 0 2px $color-primary;
+    box-shadow: 0 0 3px $color-primary;
   }
   img {
     height: 3rem;
@@ -37,6 +38,7 @@
   }
   .user {
     color: $color-primary;
+    text-shadow: 0 0 1px rgba($color-primary, 0.3);
     font-weight: 900;
     font-size: 0.8em;
     text-transform: capitalize;
@@ -57,10 +59,11 @@
   &.other {
     &:after {
       background: $color-secondary;
-      box-shadow: 0 0 2px $color-secondary;
-      .user {
-        color: $color-secondary;
-      }
+      box-shadow: 0 0 3px $color-secondary;
+    }
+    .user {
+      color: $color-secondary;
+      text-shadow: 0 0 1px rgba($color-secondary, 0.3);
     }
   }
 }
