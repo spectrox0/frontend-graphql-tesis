@@ -9,7 +9,12 @@ import UploadImage from "../uploadImage.js";
 import Error from "../Auth/Error";
 import AuthContext from "../../helpers/context/auth-context";
 
-export default function Conversations({ options, categories, changeOption }) {
+export default function Conversations({
+  options,
+  categories,
+  changeOption,
+  updateUser
+}) {
   const { userId } = useContext(AuthContext);
   const [urlImg, setUrlImg] = useState("");
   const { data, loading, error } = useQuery(QUERY_CATEGORY);
@@ -62,7 +67,7 @@ export default function Conversations({ options, categories, changeOption }) {
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          await createPost({
+          const { data } = await createPost({
             variables: {
               postInput: {
                 title: values.title,
@@ -74,6 +79,7 @@ export default function Conversations({ options, categories, changeOption }) {
             }
           });
           if (data) {
+            updateUser(data.createPost);
             resetForm();
             changeOption(0);
           }

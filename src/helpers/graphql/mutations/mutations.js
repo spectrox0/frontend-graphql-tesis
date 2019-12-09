@@ -11,6 +11,7 @@ export const CREATE_USER = gql`
 export const LOGIN = gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
+      _id
       token
     }
   }
@@ -35,6 +36,7 @@ export const CREATE_POST = gql`
       }
       _id
       urlImg
+      date
     }
   }
 `;

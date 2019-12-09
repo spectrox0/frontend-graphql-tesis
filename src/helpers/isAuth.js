@@ -11,7 +11,7 @@ export default function IsAuth() {
   const [userId, setUserId] = useState(null);
   const [urlImg, setUrlImg] = useState(null);
   const [posts, setPosts] = useState([]);
-  const { data, loading, error, refetch } = useQuery(CURRENT_USER);
+  const { data, loading, error, refetch, updateQuery } = useQuery(CURRENT_USER);
 
   const login = async token => {
     localStorage.setItem("token", token);
@@ -21,6 +21,17 @@ export default function IsAuth() {
 
   const updateUser = () => {
     refetch();
+  };
+  const addPostUser = post => {
+    updateQuery(({ currentUser }) => {
+      const res = Object.assign({}, currentUser, {
+        currentUser: {
+          ...currentUser,
+          posts: [...currentUser.posts, post]
+        }
+      });
+      return res;
+    });
   };
   const logout = () => {
     setToken(null);
@@ -61,7 +72,12 @@ export default function IsAuth() {
         updateUser: updateUser
       }}
     >
-      {!loading && <Routes isAuth={data ? token : null} />}
+      {!loading && (
+        <Routes
+          updateUser={addPostUser}
+          isAuth={data && data.currentUser ? token : null}
+        />
+      )}
     </AuthContext.Provider>
   );
 }

@@ -3,7 +3,7 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import SideBar from "../components/Home/SideBar.js";
 import Chat from "../components/Home/Chat.js";
 
-export default function Auth() {
+export default function Home({ updateUser }) {
   const [isOpenSideBar, setIsOpenSideBar] = useState(true);
   const [postId, setPostId] = useState();
 
@@ -24,6 +24,7 @@ export default function Auth() {
         isOpenSideBar={isOpenSideBar}
         changePost={changePost}
         postId={postId}
+        updateUser={updateUser}
       />
       <Chat onClick={onClick} postId={postId} />
     </div>

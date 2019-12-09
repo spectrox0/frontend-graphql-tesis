@@ -11,7 +11,8 @@ export default function SideBar({
   onClick,
   changePost,
   postId,
-  closeSideBar
+  closeSideBar,
+  updateUser
 }) {
   const [options, setOptions] = useState(0);
   const [isOpenSettings, setIsOpenSettings] = useState(false);
@@ -34,6 +35,7 @@ export default function SideBar({
           changePost={changePost}
           postId={postId}
           closeSideBar={closeSideBar}
+          updateUser={updateUser}
         />
         <InfoUser toggle={openSettings} />
         <Settings toggle={openSettings} isOpen={isOpenSettings} />
