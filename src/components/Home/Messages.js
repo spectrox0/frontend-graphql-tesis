@@ -33,7 +33,7 @@ export default function Messages({ messages, postId, subscribeToNewMessages }) {
   };
 
   return (
-    <div id="messages" className="messages scroll align-bottom">
+    <div id="messages" className="messages scroll ">
       {userId && <Message messages={messages} />}
     </div>
   );

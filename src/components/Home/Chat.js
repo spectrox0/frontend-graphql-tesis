@@ -7,9 +7,10 @@ import Spinner from "./../spinner";
 import { QUERY_POST } from "../../helpers/graphql/querys/querys";
 import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
 export default function Chat({ onClick, postId }) {
-  const [Post, { data, subscribeToMore, loading, error }] = useLazyQuery(
-    QUERY_POST
-  );
+  const [
+    Post,
+    { data, subscribeToMore, loading, error }
+  ] = useLazyQuery(QUERY_POST, { fetchPolicy: "cache-and-network" });
   const subscribeToNewMessages = () =>
     subscribeToMore({
       document: MESSAGE_ADDED_SUBSCRIPTION,
@@ -21,7 +22,7 @@ export default function Chat({ onClick, postId }) {
           const res = Object.assign({}, prev, {
             post: {
               ...prev.post,
-              messages: [...prev.post.messages, newMessage]
+              messages: [newMessage, ...prev.post.messages]
             }
           });
           return res;
