@@ -5,7 +5,9 @@ import IsAuth from "./helpers/isAuth";
 import { ApolloProvider } from "@apollo/react-hooks";
 import client from "./helpers/graphql/graphqlEndpoint";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import { Provider } from "react-redux";
 import AlertTemplate from "react-alert-template-basic";
+import store from "./redux/store";
 
 export default function App() {
   const options = {
@@ -20,7 +22,9 @@ export default function App() {
     <BrowserRouter>
       <ApolloProvider client={client}>
         <AlertProvider template={AlertTemplate} {...options}>
-          <IsAuth />
+          <Provider store={store}>
+            <IsAuth />
+          </Provider>
         </AlertProvider>
       </ApolloProvider>
     </BrowserRouter>
