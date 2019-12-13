@@ -4,14 +4,9 @@ import HeaderSearch from "./HeaderSearch";
 import CardPosts from "../Cards/CardPost";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_SEARCH_POST } from "../../helpers/graphql/querys/querys";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../pagination";
-export default function Conversations({
-  options,
-  categories,
-  changePost,
-  postId
-}) {
+export default function Conversations({ options, categories }) {
   const [categoriesSelected, setCatetories] = useState([]);
   const [search, setSearch] = useState("");
   const handlingChange = e => {
@@ -30,10 +25,19 @@ export default function Conversations({
       categories: categoriesSelected.map(e => e.value)
     }
   });
+  const { postId } = useSelector(state => ({
+    ...state.Post
+  }));
   const dispatch = useDispatch();
   const closeSideBar = () => {
     dispatch({
       type: "CLOSE_SIDEBAR"
+    });
+  };
+  const changePost = (postId, title, urlImg, creator) => {
+    dispatch({
+      type: "CHANGE_POST",
+      payload: { postId, creator, urlImg, title }
     });
   };
   const Posts = ({ posts }) =>

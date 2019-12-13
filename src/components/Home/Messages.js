@@ -2,9 +2,14 @@ import React, { useContext, useEffect } from "react";
 import InputMessage from "./inputMessage";
 import Navbar from "./NavBar";
 import CardMessage from "./../Cards/CardMessage";
+import { MDBBtn, MDBRow } from "mdbreact";
 import { useSelector } from "react-redux";
 
-export default function Messages({ messages, postId, subscribeToNewMessages }) {
+export default function Messages({
+  messages,
+  subscribeToNewMessages,
+  moreMessages
+}) {
   const { userId } = useSelector(state => ({
     ...state.User
   }));
@@ -17,9 +22,6 @@ export default function Messages({ messages, postId, subscribeToNewMessages }) {
     minute: "numeric"
   };
 
-  useEffect(() => {
-    document.getElementById("messages").scrollTop = 9999999;
-  });
   useEffect(() => {
     subscribeToNewMessages();
   });
@@ -35,8 +37,24 @@ export default function Messages({ messages, postId, subscribeToNewMessages }) {
   };
 
   return (
-    <div id="messages" className="messages scroll ">
-      {userId && <Message messages={messages} />}
-    </div>
+    <>
+      <div id="messages" className="messages scroll ">
+        {messages && (
+          <>
+            <Message messages={messages} />{" "}
+            <MDBRow>
+              {" "}
+              <MDBBtn
+                className="btn-view-more"
+                onClick={() => moreMessages(messages[messages.length - 1]._id)}
+              >
+                {" "}
+                Ver más{" "}
+              </MDBBtn>{" "}
+            </MDBRow>
+          </>
+        )}
+      </div>
+    </>
   );
 }

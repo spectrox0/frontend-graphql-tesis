@@ -12,6 +12,7 @@ export default function CardPost({
   title,
   date,
   urlImg,
+  creator,
   lastMessage,
   changePost,
   postId,
@@ -29,7 +30,7 @@ export default function CardPost({
     <Card
       className={"cardPost " + (postId === _id ? "active" : "")}
       onClick={() => {
-        changePost(_id);
+        changePost(_id, title, urlImg, creator);
         closeSideBar();
       }}
     >

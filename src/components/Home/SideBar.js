@@ -7,13 +7,7 @@ import InfoUser from "./InfoUser";
 import Switch from "./Switch.js";
 import { useDispatch } from "react-redux";
 
-export default function SideBar({
-  isOpenSideBar,
-  changePost,
-  postId,
-  closeSideBar,
-  updateUser
-}) {
+export default function SideBar({ isOpenSideBar }) {
   const [options, setOptions] = useState(0);
   const [isOpenSettings, setIsOpenSettings] = useState(false);
   const dispatch = useDispatch();
@@ -35,14 +29,7 @@ export default function SideBar({
           <Header onClick={onClick} />
           <Menu options={options} changeOption={changeOption} />
         </div>
-        <Switch
-          options={options}
-          changeOption={changeOption}
-          changePost={changePost}
-          postId={postId}
-          closeSideBar={closeSideBar}
-          updateUser={updateUser}
-        />
+        <Switch options={options} changeOption={changeOption} />
         <InfoUser toggle={openSettings} />
         <Settings toggle={openSettings} isOpen={isOpenSettings} />
       </div>{" "}

@@ -4,16 +4,25 @@ import Navbar from "./NavBar";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
 import Messages from "./Messages";
 import Spinner from "./../spinner";
-import { QUERY_POST } from "../../helpers/graphql/querys/querys";
+import {
+  QUERY_POST,
+  QUERY_MESSAGES
+} from "../../helpers/graphql/querys/querys";
 import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Chat() {
-  const [
+  /*const [
     Post,
     { data, subscribeToMore, loading, error }
-  ] = useLazyQuery(QUERY_POST, { fetchPolicy: "cache-and-network" });
-  const { postId } = useSelector(state => ({ ...state.Post }));
+  ] = useLazyQuery(QUERY_POST, { fetchPolicy: "cache-and-network" });*/
+  const { postId, title, urlImg, creator } = useSelector(state => ({
+    ...state.Post
+  }));
+  const [
+    MessagesQuery,
+    { data, subscribeToMore, loading, error, fetchMore }
+  ] = useLazyQuery(QUERY_MESSAGES, { fetchPolicy: "cache-and-network" });
 
   const dispatch = useDispatch();
   const subscribeToNewMessages = () =>
@@ -23,26 +32,38 @@ export default function Chat() {
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const newMessage = subscriptionData.data.messageAdded;
-        if (!prev.post.messages.find(msg => msg._id === newMessage._id)) {
+        if (!prev.messages.find(msg => msg._id === newMessage._id)) {
           const res = Object.assign({}, prev, {
-            post: {
-              ...prev.post,
-              messages: [newMessage, ...prev.post.messages]
-            }
+            messages: [newMessage, ...prev.messages]
           });
           return res;
         } else return prev;
       }
     });
+  const moreMessages = cursor =>
+    fetchMore({
+      variables: {
+        postId: postId,
+        first: 5,
+        after: cursor
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return Object.assign({}, prev, {
+          messages: [...prev.messages, ...fetchMoreResult.messages]
+        });
+      }
+    });
   useEffect(() => {
     if (postId) {
-      Post({
+      MessagesQuery({
         variables: {
-          _id: postId
+          postId: postId,
+          first: 20
         }
       });
     }
-  }, [Post, postId]);
+  }, [MessagesQuery, postId]);
 
   const onClick = () => {
     dispatch({
@@ -51,20 +72,17 @@ export default function Chat() {
   };
   return (
     <div className="chat">
-      <Navbar
-        title={data ? data.post.title : null}
-        urlImg={data ? data.post.urlImg : null}
-        onClick={onClick}
-      />
-      {data && !loading && (
+      <Navbar title={title} urlImg={urlImg} onClick={onClick} />
+      {data && (
         <Messages
           subscribeToMore={subscribeToMore}
           postId={postId}
-          messages={data.post.messages}
+          moreMessages={moreMessages}
+          messages={data.messages}
           subscribeToNewMessages={subscribeToNewMessages}
         />
       )}
-      {loading && (
+      {!data && loading && (
         <div className="initMessage">
           {" "}
           <Spinner />
