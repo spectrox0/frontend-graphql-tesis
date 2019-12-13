@@ -1,5 +1,6 @@
 .toggle {
   width: 1.2rem;
+  margin-top: 0.5rem;
   cursor: pointer;
   display: none;
   div {
@@ -13,10 +14,10 @@
   }
   &:hover {
     :first-child {
-      transform: translateY(-0.1rem);
+      width: 80%;
     }
     :last-child {
-      transform: translateY(0.1rem);
+      width: 80%;
     }
   }
   &:active {

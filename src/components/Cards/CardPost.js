@@ -44,7 +44,7 @@ export default function CardPost({
             <span> {new Date(date).toLocaleString("en-VE", options)} </span>
           </Row>
           <Row>
-            <p>asdasdasd </p>
+            <p>{lastMessage}</p>
           </Row>
         </Col>
       </Body>

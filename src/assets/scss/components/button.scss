@@ -19,14 +19,19 @@
   }
 }
 .btn-send {
-  color: $color-primary;
+  color: #ffffff;
   border: none;
-  border-radius: 50%;
-  text-shadow: 0 0 3px $color-primary;
-  font-size: 1.8em;
+  border-radius: 0;
+  background: none;
+  text-shadow: 0 0 1px #ffffff;
+  font-size: 1.5em;
   &:hover {
-    color: $color-primary;
+    background: none;
+    color: $color-secondary;
+    text-shadow: 0 0 2px $color-secondary;
+    opacity: 1;
   }
+
   &:focus {
     outline: none;
     box-shadow: none;

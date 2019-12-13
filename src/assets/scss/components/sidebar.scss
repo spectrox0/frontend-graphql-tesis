@@ -2,6 +2,7 @@
   position: fixed;
   min-height: 100%;
   display: flex;
+  z-index: 300;
   flex-direction: column;
   justify-content: space-between;
   background: $background-sideBar;
