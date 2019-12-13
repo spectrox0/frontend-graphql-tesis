@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import AuthContext from "../../helpers/context/auth-context";
 import {
   MDBIcon,
   MDBNavbar,
@@ -10,7 +9,6 @@ import {
 } from "mdbreact";
 import Toggle from "../toggle";
 export default function Chat({ onClick, title, urlImg }) {
-  const { logout } = useContext(AuthContext);
   return (
     <MDBNavbar expand="lg">
       {title && urlImg && (

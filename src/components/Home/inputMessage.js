@@ -3,11 +3,14 @@ import { MDBBtn, MDBIcon, MDBRow } from "mdbreact";
 import { Formik } from "formik";
 import { useMutation } from "@apollo/react-hooks";
 import { CREATE_MESSAGE } from "../../helpers/graphql/mutations/mutations";
-import AuthContext from "../../helpers/context/auth-context";
+
 import Spinner from "../spinner";
 import { useAlert } from "react-alert";
+import { useSelector } from "react-redux";
 export default function InputMessage({ postId }) {
-  const { userId } = useContext(AuthContext);
+  const { userId } = useSelector(state => ({
+    ...state.User
+  }));
   const alert = useAlert();
   const [CreateMessage, { data, loading, error }] = useMutation(CREATE_MESSAGE);
   return (

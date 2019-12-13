@@ -7,7 +7,7 @@ import { MDBBtn, MDBIcon } from "mdbreact";
 import Spinner from "./../spinner";
 import UploadImage from "../uploadImage.js";
 import Error from "../Auth/Error";
-import AuthContext from "../../helpers/context/auth-context";
+import { useSelector } from "react-redux";
 
 export default function Conversations({
   options,
@@ -15,7 +15,9 @@ export default function Conversations({
   changeOption,
   updateUser
 }) {
-  const { userId } = useContext(AuthContext);
+  const { userId } = useSelector(state => ({
+    ...state.User
+  }));
   const [urlImg, setUrlImg] = useState("");
   const { data, loading, error } = useQuery(QUERY_CATEGORY);
   const [createPost, postData] = useMutation(CREATE_POST);

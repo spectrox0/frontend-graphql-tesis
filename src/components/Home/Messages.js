@@ -2,10 +2,12 @@ import React, { useContext, useEffect } from "react";
 import InputMessage from "./inputMessage";
 import Navbar from "./NavBar";
 import CardMessage from "./../Cards/CardMessage";
-import AuthContext from "../../helpers/context/auth-context";
+import { useSelector } from "react-redux";
 
 export default function Messages({ messages, postId, subscribeToNewMessages }) {
-  const { userId } = useContext(AuthContext);
+  const { userId } = useSelector(state => ({
+    ...state.User
+  }));
   const options = {
     timeZone: "UTC",
     month: "numeric",

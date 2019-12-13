@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import SideBar from "../components/Home/SideBar.js";
 import Chat from "../components/Home/Chat.js";
+import { useSelector } from "react-redux";
 
 export default function Home({ updateUser }) {
   const [isOpenSideBar, setIsOpenSideBar] = useState(true);
   const [postId, setPostId] = useState();
-
+  const { toggle } = useSelector(state => ({ ...state.Toggle }));
   const onClick = () => {
     setIsOpenSideBar(!isOpenSideBar);
   };
@@ -21,7 +22,7 @@ export default function Home({ updateUser }) {
       <SideBar
         onClick={onClick}
         closeSideBar={closeSideBar}
-        isOpenSideBar={isOpenSideBar}
+        isOpenSideBar={toggle}
         changePost={changePost}
         postId={postId}
         updateUser={updateUser}

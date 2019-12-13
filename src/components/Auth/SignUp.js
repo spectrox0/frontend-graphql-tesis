@@ -3,13 +3,22 @@ import { Formik } from "formik";
 import { MDBBtn, MDBIcon, MDBWaves } from "mdbreact";
 import UploadImage from "../uploadImage.js";
 import Spinner from "../spinner.js";
-import AuthContext from "../../helpers/context/auth-context";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN, CREATE_USER } from "../../helpers/graphql/mutations/mutations";
 import Error from "./Error.js";
 import { useAlert } from "react-alert";
+import { useDispatch } from "react-redux";
 export default function SignIn({ isSignIn }) {
-  const { login } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const login = token => {
+    localStorage.setItem("token", token);
+    dispatch({
+      type: "LOGIN",
+      payload: {
+        token: token
+      }
+    });
+  };
   const [urlImg, setUrlImg] = useState("");
   const [isLoad, setIsLoad] = useState(false);
   const [createUser, { data, loading, error }] = useMutation(CREATE_USER);
@@ -87,13 +96,7 @@ export default function SignIn({ isSignIn }) {
               }
             });
             if (data) {
-              login(
-                data.login.token,
-                data.login.username,
-                data.login.name,
-                data.login.userId,
-                data.login.urlImg
-              );
+              login(data.login.token);
             }
           }
         } catch (err) {

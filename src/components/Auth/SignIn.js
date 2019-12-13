@@ -1,15 +1,25 @@
 import React, { useState, useContext } from "react";
-import AuthContext from "../../helpers/context/auth-context";
 import { Formik } from "formik";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "../../helpers/graphql/mutations/mutations";
 import Spinner from "../spinner.js";
 import { useAlert } from "react-alert";
+import { useDispatch } from "react-redux";
+
 export default function SignIn({ isSignIn }) {
   const [Login, { data, loading, error }] = useMutation(LOGIN);
-  const { login } = useContext(AuthContext);
+  const dispatch = useDispatch();
   const alert = useAlert();
+  const login = token => {
+    localStorage.setItem("token", token);
+    dispatch({
+      type: "LOGIN",
+      payload: {
+        token: token
+      }
+    });
+  };
   return (
     <Formik
       initialValues={{ username: "", password: "" }}

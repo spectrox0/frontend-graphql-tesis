@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import CardPost from "./../Cards/CardPost";
-import AuthContext from "../../helpers/context/auth-context";
-export default function Conversations({
-  options,
-  changePost,
-  postId,
-  closeSideBar
-}) {
-  const { posts } = useContext(AuthContext);
+import { useSelector, useDispatch } from "react-redux";
+export default function Conversations({ options, changePost, postId }) {
+  const { posts } = useSelector(state => ({
+    ...state.User
+  }));
+  const dispatch = useDispatch();
+  const closeSideBar = () => {
+    dispatch({
+      type: "CLOSE_SIDEBAR"
+    });
+  };
   const Posts = () => {
     return posts.map(post => (
       <CardPost

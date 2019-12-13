@@ -5,10 +5,10 @@ import Settings from "./Settings";
 import InfoUser from "./InfoUser";
 
 import Switch from "./Switch.js";
+import { useDispatch } from "react-redux";
 
 export default function SideBar({
   isOpenSideBar,
-  onClick,
   changePost,
   postId,
   closeSideBar,
@@ -16,11 +16,17 @@ export default function SideBar({
 }) {
   const [options, setOptions] = useState(0);
   const [isOpenSettings, setIsOpenSettings] = useState(false);
+  const dispatch = useDispatch();
   const openSettings = () => {
     setIsOpenSettings(!isOpenSettings);
   };
   const changeOption = value => {
     if (value !== options) setOptions(value);
+  };
+  const onClick = () => {
+    dispatch({
+      type: "TOGGLE"
+    });
   };
   return (
     <>

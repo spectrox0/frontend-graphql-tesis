@@ -1,14 +1,22 @@
 import React, { useContext } from "react";
 import { MDBRow, MDBCol, MDBIcon, MDBBtn } from "mdbreact";
-import AuthContext from "../../helpers/context/auth-context";
+import { useDispatch, useSelector } from "react-redux";
 export default function InfoUser({ toggle }) {
-  const { logout, urlImg, name, username } = useContext(AuthContext);
-
+  const dispatch = useDispatch();
+  const { userImg, name, username } = useSelector(state => ({
+    ...state.User
+  }));
+  const logout = () => {
+    localStorage.removeItem("token");
+    dispatch({
+      type: "LOGOUT"
+    });
+  };
   return (
     <footer>
       <MDBRow>
         <MDBCol>
-          <img className="imgProfile" src={urlImg} alt="" />
+          <img className="imgProfile" src={userImg} alt="" />
         </MDBCol>
         <MDBCol>
           <MDBRow>

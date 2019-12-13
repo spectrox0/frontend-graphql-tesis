@@ -1,26 +1,37 @@
 import React, { useState, useContext } from "react";
 import { MDBModal, MDBModalHeader, MDBModalBody } from "mdbreact";
-import AuthContext from "../../helpers/context/auth-context";
 import { Formik } from "formik";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import { useMutation } from "@apollo/react-hooks";
 import { UPDATE_USER } from "../../helpers/graphql/mutations/mutations";
 import UploadImage from "../uploadImage.js";
-import Error from "../Auth/Error";
+
 import Spinner from "../spinner.js";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Settings({ isOpen, toggle }) {
-  const { username, name, urlImg, userId, updateUser } = useContext(
-    AuthContext
-  );
+  const { username, name, userImg, userId } = useSelector(state => ({
+    ...state.User
+  }));
+  const dispatch = useDispatch();
   const [updateUserr, { data, loading, error }] = useMutation(UPDATE_USER);
 
   const [urlImg1, setUrlImg] = useState("");
   const [isLoad, setIsLoad] = useState(false);
 
+  const updateUser = (username, name, userImg) => {
+    dispatch({
+      type: "UPDATE_USER",
+      payload: {
+        username,
+        name,
+        userImg
+      }
+    });
+  };
   React.useEffect(() => {
-    setUrlImg(urlImg);
-  }, [urlImg]);
+    setUrlImg(userImg);
+  }, [userImg]);
   const handlingLoadImage = value => {
     setIsLoad(value);
   };
@@ -67,7 +78,7 @@ export default function Settings({ isOpen, toggle }) {
               }
             });
             if (data) {
-              updateUser();
+              updateUser(values.username, values.name, urlImg1);
               toggle();
             }
 

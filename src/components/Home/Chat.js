@@ -6,11 +6,16 @@ import Messages from "./Messages";
 import Spinner from "./../spinner";
 import { QUERY_POST } from "../../helpers/graphql/querys/querys";
 import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
-export default function Chat({ onClick, postId }) {
+import { useSelector, useDispatch } from "react-redux";
+
+export default function Chat() {
   const [
     Post,
     { data, subscribeToMore, loading, error }
   ] = useLazyQuery(QUERY_POST, { fetchPolicy: "cache-and-network" });
+  const { postId } = useSelector(state => ({ ...state.Post }));
+
+  const dispatch = useDispatch();
   const subscribeToNewMessages = () =>
     subscribeToMore({
       document: MESSAGE_ADDED_SUBSCRIPTION,
@@ -38,6 +43,12 @@ export default function Chat({ onClick, postId }) {
       });
     }
   }, [Post, postId]);
+
+  const onClick = () => {
+    dispatch({
+      type: "TOGGLE"
+    });
+  };
   return (
     <div className="chat">
       <Navbar
