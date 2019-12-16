@@ -2,8 +2,22 @@
   .dropdown-menu {
     border-radius: 0;
     border-left: 2px solid $color-secondary;
-    background: rgba(255, 255, 255, 0.9);
+    background: none;
     box-shadow: 0 0 1px #ffffff;
+    padding: 0;
+    .dropdown-item {
+      padding: 0;
+      background: rgba(255, 255, 255, 0.9);
+      &:focus {
+        background: none;
+        outline: none;
+      }
+    }
+    .dropdown-item:nth-child(even) {
+      background: rgba(219, 219, 219, 0.9);
+      color: $color-secondary;
+      box-shadow: 0 0 1px #000000;
+    }
   }
   .btn {
     .notifications {
@@ -18,11 +32,13 @@
       border-radius: 50%;
       background: #ffffff;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+      font-weight: 900;
       color: black;
     }
     &:focus {
       i {
         color: $color-secondary;
+        text-shadow: 0 0 2px $color-secondary;
       }
     }
   }

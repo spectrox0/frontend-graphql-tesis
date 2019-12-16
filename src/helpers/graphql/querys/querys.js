@@ -84,3 +84,21 @@ export const QUERY_MESSAGES = gql`
     }
   }
 `;
+
+export const QUERY_NOTIFICATIONS = gql`
+  query notifications($userId: String!) {
+    notifications(userId: $userId) {
+      _id
+
+      message {
+        content
+        date
+
+        user {
+          username
+          urlImg
+        }
+      }
+    }
+  }
+`;

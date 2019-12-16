@@ -14,3 +14,21 @@ export const MESSAGE_ADDED_SUBSCRIPTION = gql`
     }
   }
 `;
+
+export const NOTIFICATION_ADDED_SUSCRIPTION = gql`
+  subscription notificationAdded($userId: String!) {
+    notificationAdded(userId: $userId) {
+      _id
+
+      message {
+        content
+        date
+
+        user {
+          username
+          urlImg
+        }
+      }
+    }
+  }
+`;

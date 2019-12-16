@@ -1,0 +1,25 @@
+.card-notification {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+  height: auto;
+  background: none;
+  .card-body {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0;
+    .card-text {
+      font-size: 0.6em;
+      overflow: hidden;
+    }
+  }
+  img {
+    height: 2.1rem;
+    width: 2.1rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 0 1px #ffffff;
+  }
+}

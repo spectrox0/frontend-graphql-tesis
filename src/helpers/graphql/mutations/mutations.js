@@ -58,3 +58,11 @@ export const CREATE_MESSAGE = gql`
     }
   }
 `;
+
+export const DELETE_NOTIFICATIONS = gql`
+  mutation deleteNotifications($postId: String!, $userId: String!) {
+    deleteNotifications(postId: $postId, userId: $userId) {
+      _id
+    }
+  }
+`;
