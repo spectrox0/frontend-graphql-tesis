@@ -10,10 +10,16 @@ import CardNotifications from "./../Cards/CardNotification";
 import { DELETE_NOTIFICATIONS } from "../../helpers/graphql/mutations/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
+
 export default function Notification({ notifications, subscribeToNews }) {
   const [deleteNotification, { data, loading, error }] = useMutation(
     DELETE_NOTIFICATIONS
   );
+  const { postId, userId } = useSelector(state => ({
+    ...state.User,
+    ...state.Post
+  }));
+  const dispatch = useDispatch();
   const DeleteNotifications = () => {
     deleteNotification({
       variables: {
@@ -22,10 +28,26 @@ export default function Notification({ notifications, subscribeToNews }) {
       }
     });
   };
+  const changePost = (postId, creator, urlImg, title) => {
+    dispatch({
+      type: "CHANGE_POST",
+      payload: {
+        postId,
+        creator,
+        urlImg,
+        title
+      }
+    });
+    DeleteNotifications();
+  };
   const Notifications = ({ notifications }) =>
     notifications.map(notification => (
       <MDBDropdownItem key={notification._id}>
-        <CardNotifications options={options} {...notification} />
+        <CardNotifications
+          options={options}
+          {...notification}
+          onClick={changePost}
+        />
       </MDBDropdownItem>
     ));
 

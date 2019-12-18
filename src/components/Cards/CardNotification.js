@@ -15,10 +15,18 @@ export default function CardNotification({
     content,
     date,
     user: { urlImg, username }
-  }
+  },
+  title,
+  creator,
+  _id,
+  urlImg: urlImgPost,
+  onClick
 }) {
   return (
-    <Card className="card-notification">
+    <Card
+      className="card-notification"
+      onClick={() => onClick(_id, creator, urlImgPost, title)}
+    >
       <Body>
         <Img waves src={urlImg} />{" "}
         <Text>

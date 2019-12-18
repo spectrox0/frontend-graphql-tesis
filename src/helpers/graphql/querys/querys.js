@@ -81,6 +81,9 @@ export const QUERY_MESSAGES = gql`
         name
         urlImg
       }
+      post {
+        _id
+      }
     }
   }
 `;
@@ -97,6 +100,15 @@ export const QUERY_NOTIFICATIONS = gql`
         user {
           username
           urlImg
+        }
+        post {
+          title
+          creator {
+            _id
+            username
+          }
+          urlImg
+          _id
         }
       }
     }
