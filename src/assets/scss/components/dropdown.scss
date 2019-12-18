@@ -4,6 +4,8 @@
     border-left: 2px solid $color-secondary;
     background: none;
     box-shadow: 0 0 1px #ffffff;
+    overflow-y: scroll;
+    max-height: 70vh;
     padding: 0;
     .dropdown-item {
       padding: 0;

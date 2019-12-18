@@ -11,24 +11,22 @@ import { DELETE_NOTIFICATIONS } from "../../helpers/graphql/mutations/mutations"
 import { useMutation } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Notification({ notifications, subscribeToNews }) {
+export default function Notification({
+  notifications,
+  subscribeToNews,
+  update
+}) {
   const [deleteNotification, { data, loading, error }] = useMutation(
     DELETE_NOTIFICATIONS
   );
-  const { postId, userId } = useSelector(state => ({
-    ...state.User,
-    ...state.Post
+  const { userId } = useSelector(state => ({
+    ...state.User
   }));
+
   const dispatch = useDispatch();
-  const DeleteNotifications = () => {
-    deleteNotification({
-      variables: {
-        postId,
-        userId
-      }
-    });
-  };
-  const changePost = (postId, creator, urlImg, title) => {
+
+  const changePost = async (postId, creator, urlImg, title) => {
+    console.log(postId);
     dispatch({
       type: "CHANGE_POST",
       payload: {
@@ -38,7 +36,16 @@ export default function Notification({ notifications, subscribeToNews }) {
         title
       }
     });
-    DeleteNotifications();
+    dispatch({
+      type: "CLOSE_SIDEBAR"
+    });
+    const { data } = await deleteNotification({
+      variables: {
+        postId,
+        userId
+      }
+    });
+    if (data) update();
   };
   const Notifications = ({ notifications }) =>
     notifications.map(notification => (
@@ -68,9 +75,11 @@ export default function Notification({ notifications, subscribeToNews }) {
         <div className="notifications"> {notifications.length} </div>
         <MDBIcon icon="bell" />
       </MDBDropdownToggle>
-      <MDBDropdownMenu basic>
-        <Notifications notifications={notifications} />
-      </MDBDropdownMenu>
+      {notifications.length > 0 && (
+        <MDBDropdownMenu basic>
+          <Notifications notifications={notifications} />
+        </MDBDropdownMenu>
+      )}
     </MDBDropdown>
   );
 }

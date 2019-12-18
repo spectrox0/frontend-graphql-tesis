@@ -10,7 +10,8 @@ import { useAlert } from "react-alert";
 import CardMessage from "../Cards/CardMessage";
 export default function HeaderSideBar({ onClick }) {
   const { userId } = useSelector(state => ({ ...state.User }));
-  const { data, loading, error, subscribeToMore } = useQuery(
+
+  const { data, loading, error, subscribeToMore, refetch } = useQuery(
     QUERY_NOTIFICATIONS,
     {
       variables: {
@@ -19,15 +20,7 @@ export default function HeaderSideBar({ onClick }) {
     }
   );
   const alert = useAlert();
-  const {
-    data: dataNewNotification,
-    loading: loadingNotification,
-    error: errorNotification
-  } = useSubscription(NOTIFICATION_ADDED_SUSCRIPTION, {
-    variables: {
-      userId: userId
-    }
-  });
+
   const subscribeToNews = () => {
     subscribeToMore({
       document: NOTIFICATION_ADDED_SUSCRIPTION,
@@ -57,6 +50,7 @@ export default function HeaderSideBar({ onClick }) {
           <Notification
             subscribeToNews={subscribeToNews}
             notifications={data.notifications}
+            update={refetch}
           />
         )}
       </MDBCol>
