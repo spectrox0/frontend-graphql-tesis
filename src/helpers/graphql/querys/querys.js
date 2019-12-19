@@ -72,14 +72,17 @@ export const QUERY_SEARCH_POST = gql`
 export const QUERY_MESSAGES = gql`
   query messages($postId: String!, $first: Int!, $after: String) {
     messages(postId: $postId, first: $first, after: $after) {
-      _id
-      content
-      date
-      user {
+      hasNextPage
+      messages {
         _id
-        username
-        name
-        urlImg
+        content
+        date
+        user {
+          _id
+          username
+          name
+          urlImg
+        }
       }
     }
   }
