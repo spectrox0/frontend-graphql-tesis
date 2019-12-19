@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import Routes from "./routes/Routes";
 
 export default function IsAuth() {
-  const [CurrentUser, { data, loading, error, refetch }] = useLazyQuery(
-    CURRENT_USER
-  );
+  const [CurrentUser, { data, loading }] = useLazyQuery(CURRENT_USER, {
+    fetchPolicy: "cache-and-network"
+  });
 
   const { token } = useSelector(state => ({
     ...state.User

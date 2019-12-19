@@ -1,14 +1,16 @@
 import React, { useContext, useEffect } from "react";
-import InputMessage from "./inputMessage";
-import Navbar from "./NavBar";
+
 import CardMessage from "./../Cards/CardMessage";
 import { MDBBtn, MDBRow } from "mdbreact";
 import { useSelector } from "react-redux";
+import Spinner from "../spinner";
 
 export default function Messages({
   messages,
   subscribeToNewMessages,
-  moreMessages
+  moreMessages,
+  loading,
+  hasNextPage
 }) {
   const { userId } = useSelector(state => ({
     ...state.User
@@ -42,15 +44,19 @@ export default function Messages({
         {messages && (
           <>
             <Message messages={messages} />{" "}
-            <MDBRow>
+            <MDBRow style={{ display: "flex", justifyContent: "center" }}>
               {" "}
-              <MDBBtn
-                className="btn-view-more"
-                onClick={() => moreMessages(messages[messages.length - 1]._id)}
-              >
-                {" "}
-                Ver más{" "}
-              </MDBBtn>{" "}
+              {loading && hasNextPage && <Spinner />}
+              {!loading && hasNextPage && (
+                <MDBBtn
+                  className="btn-view-more"
+                  onClick={() =>
+                    moreMessages(messages[messages.length - 1]._id)
+                  }
+                >
+                  Ver más
+                </MDBBtn>
+              )}
             </MDBRow>
           </>
         )}

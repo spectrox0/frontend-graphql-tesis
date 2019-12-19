@@ -32,9 +32,12 @@ export default function Chat() {
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const newMessage = subscriptionData.data.messageAdded;
-        if (!prev.messages.find(msg => msg._id === newMessage._id)) {
+        if (!prev.messages.messages.find(msg => msg._id === newMessage._id)) {
           const res = Object.assign({}, prev, {
-            messages: [newMessage, ...prev.messages]
+            messages: {
+              ...prev.messages,
+              messages: [newMessage, ...prev.messages.messages]
+            }
           });
           return res;
         } else return prev;
@@ -50,7 +53,14 @@ export default function Chat() {
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
         return Object.assign({}, prev, {
-          messages: [...prev.messages, ...fetchMoreResult.messages]
+          messages: {
+            ...prev.messages,
+            hasNextPage: fetchMoreResult.messages.hasNextPage,
+            messages: [
+              ...prev.messages.messages,
+              ...fetchMoreResult.messages.messages
+            ]
+          }
         });
       }
     });
@@ -78,8 +88,10 @@ export default function Chat() {
           subscribeToMore={subscribeToMore}
           postId={postId}
           moreMessages={moreMessages}
-          messages={data.messages}
+          messages={data.messages.messages}
           subscribeToNewMessages={subscribeToNewMessages}
+          loading={loading}
+          hasNextPage={data.messages.hasNextPage}
         />
       )}
       {!data && loading && (
