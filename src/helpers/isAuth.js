@@ -9,7 +9,7 @@ export default function IsAuth() {
   const [
     CurrentUser,
     { data, loading, error, refetch, updateQuery }
-  ] = useLazyQuery(CURRENT_USER);
+  ] = useLazyQuery(CURRENT_USER, { fetchPolicy: "cache-and-network" });
 
   const { token } = useSelector(state => ({
     ...state.User
