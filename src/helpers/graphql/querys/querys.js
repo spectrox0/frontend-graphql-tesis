@@ -7,12 +7,6 @@ export const CURRENT_USER = gql`
       name
       username
       urlImg
-      posts {
-        _id
-        title
-        date
-        urlImg
-      }
     }
   }
 `;
@@ -24,6 +18,17 @@ export const QUERY_CATEGORY = gql`
         name
         description
       }
+    }
+  }
+`;
+
+export const QUERY_POST_BY_CREATOR = gql`
+  query postsByCreator($userId: String!) {
+    postsByCreator(userId: $userId) {
+      _id
+      title
+      date
+      urlImg
     }
   }
 `;

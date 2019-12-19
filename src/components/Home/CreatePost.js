@@ -13,7 +13,7 @@ export default function Conversations({
   options,
   categories,
   changeOption,
-  updateUser
+  updatePost
 }) {
   const { userId } = useSelector(state => ({
     ...state.User
@@ -81,7 +81,7 @@ export default function Conversations({
             }
           });
           if (data) {
-            updateUser(data.createPost);
+            updatePost(data.createPost);
             resetForm();
             changeOption(0);
           }

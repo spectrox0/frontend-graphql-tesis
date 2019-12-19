@@ -5,8 +5,7 @@ const initialState = {
   userId: null,
   userImg: null,
   name: null,
-  username: null,
-  posts: []
+  username: null
 };
 
 export default function(state = initialState, action) {
@@ -28,8 +27,7 @@ export default function(state = initialState, action) {
         userId,
         userImg,
         name,
-        username,
-        posts
+        username
       };
     }
     case UPDATE_USER: {

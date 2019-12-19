@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import CardPost from "./../Cards/CardPost";
 import { useSelector, useDispatch } from "react-redux";
-export default function Conversations({ options }) {
-  const { posts, postId } = useSelector(state => ({
-    ...state.User,
+
+export default function Conversations({ options, posts }) {
+  const { postId } = useSelector(state => ({
     ...state.Post
   }));
   const dispatch = useDispatch();
@@ -12,13 +12,15 @@ export default function Conversations({ options }) {
       type: "CLOSE_SIDEBAR"
     });
   };
+
   const changePost = (postId, title, urlImg, creator) => {
     dispatch({
       type: "CHANGE_POST",
       payload: { postId, creator, urlImg, title }
     });
   };
-  const Posts = () => {
+
+  const Posts = ({ posts }) => {
     return posts.map(post => (
       <CardPost
         changePost={changePost}
@@ -31,7 +33,7 @@ export default function Conversations({ options }) {
   };
   return (
     <section className={options === 0 ? "chats active scroll" : "chats scroll"}>
-      {posts && <Posts />}
+      {posts && <Posts posts={posts} />}
     </section>
   );
 }

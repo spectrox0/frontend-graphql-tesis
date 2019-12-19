@@ -7,10 +7,7 @@ export default function Routes({ isAuth, updateUser }) {
   return (
     <Switch>
       {isAuth ? (
-        <Route
-          path="/"
-          render={props => <Home {...props} updateUser={updateUser} />}
-        />
+        <Route path="/" render={props => <Home {...props} />} />
       ) : (
         <Route path="/" render={props => <Auth {...props} />} />
       )}

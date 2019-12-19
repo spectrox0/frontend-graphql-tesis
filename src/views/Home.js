@@ -25,7 +25,6 @@ export default function Home({ updateUser }) {
         isOpenSideBar={toggle}
         changePost={changePost}
         postId={postId}
-        updateUser={updateUser}
       />
       <Chat onClick={onClick} postId={postId} />
     </div>

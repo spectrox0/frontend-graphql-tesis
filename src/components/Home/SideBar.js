@@ -14,6 +14,7 @@ export default function SideBar({ isOpenSideBar }) {
   const openSettings = () => {
     setIsOpenSettings(!isOpenSettings);
   };
+
   const changeOption = value => {
     if (value !== options) setOptions(value);
   };
@@ -22,6 +23,7 @@ export default function SideBar({ isOpenSideBar }) {
       type: "TOGGLE"
     });
   };
+
   return (
     <>
       <div className={isOpenSideBar ? "sideBar isOpen" : "sideBar"}>
