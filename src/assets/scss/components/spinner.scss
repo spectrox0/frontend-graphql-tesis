@@ -1,7 +1,6 @@
-.spinner-grow {
-  width: 5rem;
+.spinner-border {
   margin: 1rem;
-  background: $color-primary;
+  color: $color-primary;
+  text-shadow: $color-primary 0 0 5px;
   font-weight: 900;
-  height: 5rem;
 }

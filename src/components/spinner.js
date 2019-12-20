@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Spinner() {
   return (
-    <div className="spinner-grow fast" role="status">
+    <div className="spinner-border fast" role="status">
       <span className="sr-only">Loading...</span>
     </div>
   );
