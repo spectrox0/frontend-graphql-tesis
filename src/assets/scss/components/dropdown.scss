@@ -20,6 +20,11 @@
       color: $color-secondary;
       box-shadow: 0 0 1px #000000;
     }
+    .dropdown-item:nth-child(odd) {
+      background: rgba(255, 255, 255, 0.9);
+      color: $color-secondary;
+      box-shadow: 0 0 1px #000000;
+    }
   }
   .btn {
     .notifications {
