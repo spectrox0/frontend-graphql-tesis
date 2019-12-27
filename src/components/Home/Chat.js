@@ -9,10 +9,6 @@ import { QUERY_MESSAGES } from "../../helpers/graphql/querys/querys";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Chat() {
-  /*const [
-    Post,
-    { data, subscribeToMore, loading, error }
-  ] = useLazyQuery(QUERY_POST, { fetchPolicy: "cache-and-network" });*/
   const { postId, title, urlImg, creator } = useSelector(state => ({
     ...state.Post
   }));

@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBIcon } from "mdbreact";
+import { MDBIcon, MDBNav, MDBNavItem, MDBNavLink, MDBBtn } from "mdbreact";
 export default function SideBar({ options, changeOption }) {
   return (
     <nav>
@@ -8,29 +8,29 @@ export default function SideBar({ options, changeOption }) {
           className={options === 0 ? "option_1 active" : "option_1"}
           onClick={() => changeOption(0)}
         >
-          <div className="item">
+          <MDBBtn className="item">
             {" "}
             <MDBIcon icon="comments" /> My posts{" "}
-          </div>
+          </MDBBtn>
         </li>
 
         <li
           className={options === 1 ? "option_2 active" : "option_2"}
           onClick={() => changeOption(1)}
         >
-          <div className="item">
+          <MDBBtn className="item">
             {" "}
             <MDBIcon icon="search" /> Search{" "}
-          </div>
+          </MDBBtn>
         </li>
         <li
           className={options === 2 ? "option_3 active" : "option_3"}
           onClick={() => changeOption(2)}
         >
-          <div className="item">
+          <MDBBtn className="item">
             {" "}
             <MDBIcon icon="plus" /> Create
-          </div>
+          </MDBBtn>
         </li>
       </ul>
     </nav>

@@ -6,6 +6,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { QUERY_SEARCH_POST } from "../../helpers/graphql/querys/querys";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../pagination";
+import Spinner from "../spinner";
 export default function Conversations({ options, categories }) {
   const [categoriesSelected, setCatetories] = useState([]);
   const [search, setSearch] = useState("");
@@ -65,7 +66,8 @@ export default function Conversations({ options, categories }) {
         handlingSearch={handlingSearch}
       />
       <div id="posts" className="posts">
-        {data && <Posts posts={data.searchPost} />}
+        {data && !loading && <Posts posts={data.searchPost} />}
+        {loading && <Spinner />}
       </div>
     </section>
   );
