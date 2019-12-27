@@ -26,7 +26,6 @@ export default function Notification({
   const dispatch = useDispatch();
 
   const changePost = async (postId, creator, urlImg, title) => {
-    console.log(postId);
     dispatch({
       type: "CHANGE_POST",
       payload: {
