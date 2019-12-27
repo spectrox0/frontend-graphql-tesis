@@ -10,10 +10,10 @@ import CardNotifications from "./../Cards/CardNotification";
 import { DELETE_NOTIFICATIONS } from "../../helpers/graphql/mutations/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
-
+import { NOTIFICATION_ADDED_SUSCRIPTION } from "../../helpers/graphql/subscription/subcription";
 export default function Notification({
   notifications,
-  subscribeToNews,
+  subscribeToMore,
   update
 }) {
   const [deleteNotification, { data, loading, error }] = useMutation(
@@ -58,8 +58,26 @@ export default function Notification({
     ));
 
   React.useEffect(() => {
-    subscribeToNews();
-  }, [subscribeToNews]);
+    const unsubscribe = subscribeToMore({
+      document: NOTIFICATION_ADDED_SUSCRIPTION,
+      variables: {
+        userId: userId
+      },
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const newNotification = subscriptionData.data.notificationAdded;
+        if (!prev.notifications.find(msg => msg._id === newNotification._id)) {
+          const res = Object.assign({}, prev, {
+            notifications: [newNotification, ...prev.notifications]
+          });
+          return res;
+        } else return prev;
+      }
+    });
+    return function cleanup() {
+      unsubscribe();
+    };
+  }, [subscribeToMore, userId]);
   const options = {
     timeZone: "UTC",
     month: "numeric",

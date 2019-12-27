@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import InputMessage from "./inputMessage";
 import Navbar from "./NavBar";
-import { useQuery, useLazyQuery } from "@apollo/react-hooks";
+import { useLazyQuery } from "@apollo/react-hooks";
 import Messages from "./Messages";
 import Spinner from "./../spinner";
-import {
-  QUERY_POST,
-  QUERY_MESSAGES
-} from "../../helpers/graphql/querys/querys";
-import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
+import { QUERY_MESSAGES } from "../../helpers/graphql/querys/querys";
+
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Chat() {
@@ -25,24 +22,7 @@ export default function Chat() {
   ] = useLazyQuery(QUERY_MESSAGES, { fetchPolicy: "cache-and-network" });
 
   const dispatch = useDispatch();
-  const subscribeToNewMessages = () =>
-    subscribeToMore({
-      document: MESSAGE_ADDED_SUBSCRIPTION,
-      variables: { postId: postId },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const newMessage = subscriptionData.data.messageAdded;
-        if (!prev.messages.messages.find(msg => msg._id === newMessage._id)) {
-          const res = Object.assign({}, prev, {
-            messages: {
-              ...prev.messages,
-              messages: [newMessage, ...prev.messages.messages]
-            }
-          });
-          return res;
-        } else return prev;
-      }
-    });
+
   const moreMessages = cursor =>
     fetchMore({
       variables: {
@@ -85,11 +65,10 @@ export default function Chat() {
       <Navbar title={title} urlImg={urlImg} onClick={onClick} />
       {data && (
         <Messages
-          subscribeToMore={subscribeToMore}
           postId={postId}
+          subscribeToMore={subscribeToMore}
           moreMessages={moreMessages}
           messages={data.messages.messages}
-          subscribeToNewMessages={subscribeToNewMessages}
           loading={loading}
           hasNextPage={data.messages.hasNextPage}
         />

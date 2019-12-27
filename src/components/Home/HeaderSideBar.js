@@ -4,7 +4,6 @@ import Notification from "./Notification";
 import { MDBRow, MDBCol } from "mdbreact";
 import { useQuery, useSubscription } from "@apollo/react-hooks";
 import { QUERY_NOTIFICATIONS } from "../../helpers/graphql/querys/querys";
-import { NOTIFICATION_ADDED_SUSCRIPTION } from "../../helpers/graphql/subscription/subcription";
 import { useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import CardMessage from "../Cards/CardMessage";
@@ -21,25 +20,6 @@ export default function HeaderSideBar({ onClick }) {
   );
   const alert = useAlert();
 
-  const subscribeToNews = () => {
-    subscribeToMore({
-      document: NOTIFICATION_ADDED_SUSCRIPTION,
-      variables: {
-        userId: userId
-      },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const newNotification = subscriptionData.data.notificationAdded;
-        if (!prev.notifications.find(msg => msg._id === newNotification._id)) {
-          const res = Object.assign({}, prev, {
-            notifications: [newNotification, ...prev.notifications]
-          });
-          alert.show(<CardMessage {...newNotification.message} />);
-          return res;
-        } else return prev;
-      }
-    });
-  };
   return (
     <header>
       <MDBCol size="9" className="logo">
@@ -50,7 +30,7 @@ export default function HeaderSideBar({ onClick }) {
       <MDBCol size="2">
         {data && (
           <Notification
-            subscribeToNews={subscribeToNews}
+            subscribeToMore={subscribeToMore}
             notifications={data.notifications}
             update={refetch}
           />
