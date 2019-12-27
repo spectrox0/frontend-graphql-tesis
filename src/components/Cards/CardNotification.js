@@ -17,7 +17,6 @@ export default function CardNotification({
     user: { urlImg, username }
   },
   post: { title, creator, _id, urlImg: urlImgPost },
-
   onClick
 }) {
   return (

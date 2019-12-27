@@ -71,7 +71,7 @@ export default function SignIn({ isSignIn }) {
         } else if (values.name.length < 3) {
           errors.name = "more 3 characters";
         }
-
+        if (urlImg.length === 0) errors.urlImg = "Img is required";
         return errors;
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
@@ -158,7 +158,7 @@ export default function SignIn({ isSignIn }) {
                   handlingLoadImage={handlingLoadImage}
                 />
               </div>
-
+              <Error touched={true} message={errors.urlImg} />
               <div
                 className={
                   values.email.length > 0
