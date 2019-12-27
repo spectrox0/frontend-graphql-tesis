@@ -10,7 +10,7 @@ export default function SideBar({ options, changeOption }) {
         >
           <div className="item">
             {" "}
-            <MDBIcon icon="comments" /> Chats{" "}
+            <MDBIcon icon="comments" /> My posts{" "}
           </div>
         </li>
 

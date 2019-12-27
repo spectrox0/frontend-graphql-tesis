@@ -43,9 +43,11 @@ export default function HeaderSideBar({ onClick }) {
   return (
     <header>
       <MDBCol size="9" className="logo">
-        <h1> CodeLine </h1>
+        <img src={require("../../assets/img/graphql.svg")} alt="" />
+        <h1> GraphQL </h1>
       </MDBCol>
-      <MDBCol size="3" style={{ display: "flex", justifyContent: "flex-end" }}>
+
+      <MDBCol size="2">
         {data && (
           <Notification
             subscribeToNews={subscribeToNews}
@@ -53,6 +55,10 @@ export default function HeaderSideBar({ onClick }) {
             update={refetch}
           />
         )}
+      </MDBCol>
+
+      <MDBCol size="1">
+        <Toggle onClick={onClick} />
       </MDBCol>
     </header>
   );

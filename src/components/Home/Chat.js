@@ -100,7 +100,11 @@ export default function Chat() {
           <Spinner />
         </div>
       )}
-      {!data && !loading && <div className="initMessage">Welcome </div>}
+      {!data && !loading && (
+        <div className="initMessage">
+          Welcome <img src={require("../../assets/img/graphql.svg")} alt="" />{" "}
+        </div>
+      )}
       <InputMessage postId={postId} />
     </div>
   );

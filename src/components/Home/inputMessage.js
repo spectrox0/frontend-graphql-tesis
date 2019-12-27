@@ -2,17 +2,24 @@ import React, { useContext } from "react";
 import { MDBBtn, MDBIcon, MDBRow } from "mdbreact";
 import { Formik } from "formik";
 import { useMutation } from "@apollo/react-hooks";
-import { CREATE_MESSAGE } from "../../helpers/graphql/mutations/mutations";
+import {
+  CREATE_MESSAGE,
+  CREATE_NOTIFICATION
+} from "../../helpers/graphql/mutations/mutations";
 
 import Spinner from "../spinner";
 import { useAlert } from "react-alert";
 import { useSelector } from "react-redux";
 export default function InputMessage({ postId }) {
-  const { userId } = useSelector(state => ({
-    ...state.User
+  const { userId, creator } = useSelector(state => ({
+    ...state.User,
+    ...state.Post
   }));
   const alert = useAlert();
   const [CreateMessage, { data, loading, error }] = useMutation(CREATE_MESSAGE);
+  const [CreateNotification, { data: CreateNotificationData }] = useMutation(
+    CREATE_NOTIFICATION
+  );
   return (
     <MDBRow className="inputMessage">
       <Formik
@@ -37,14 +44,22 @@ export default function InputMessage({ postId }) {
               variables: {
                 messageInput: {
                   content: values.message,
-                  postId: postId,
-                  userId: userId
+                  postId,
+                  userId
                 }
               }
             });
             if (data) {
-              alert.success("Se envio el mensaje correctamente");
-              setSubmitting(false);
+              const { data: dataNotification } = await CreateNotification({
+                variables: {
+                  notificationInput: {
+                    postId,
+                    userId: creator._id,
+                    messageId: data.createMessage._id
+                  }
+                }
+              });
+              if (dataNotification) setSubmitting(false);
             }
           } catch (err) {
             alert.error("Error");

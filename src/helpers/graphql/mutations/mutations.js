@@ -66,3 +66,11 @@ export const DELETE_NOTIFICATIONS = gql`
     }
   }
 `;
+
+export const CREATE_NOTIFICATION = gql`
+  mutation createNotification($notificationInput: NotificationInput!) {
+    createNotification(notificationInput: $notificationInput) {
+      _id
+    }
+  }
+`;

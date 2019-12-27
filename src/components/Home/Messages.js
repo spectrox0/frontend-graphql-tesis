@@ -26,7 +26,7 @@ export default function Messages({
 
   useEffect(() => {
     subscribeToNewMessages();
-  });
+  }, [subscribeToNewMessages]);
   const Message = ({ messages }) => {
     return messages.map(message => (
       <CardMessage

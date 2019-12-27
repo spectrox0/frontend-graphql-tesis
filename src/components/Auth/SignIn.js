@@ -73,6 +73,7 @@ export default function SignIn({ isSignIn }) {
             <Spinner />
           ) : (
             <>
+              <img src={require("../../assets/img/graphql.svg")} alt="" />
               <div
                 className={
                   values.username.length > 0
