@@ -5,7 +5,6 @@ import { useLazyQuery } from "@apollo/react-hooks";
 import Messages from "./Messages";
 import Spinner from "./../spinner";
 import { QUERY_MESSAGES } from "../../helpers/graphql/querys/querys";
-
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Chat() {

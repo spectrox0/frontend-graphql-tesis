@@ -16,6 +16,7 @@ export default function Messages({
   const { userId } = useSelector(state => ({
     ...state.User
   }));
+  const messageRef = React.useRef();
   const options = {
     timeZone: "UTC",
     month: "numeric",
@@ -58,28 +59,38 @@ export default function Messages({
     ));
   };
 
+  React.useEffect(() => {
+    scrollBottom();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [messages[0]]);
+
+  const scrollBottom = () =>
+    (messageRef.current.scrollTop = messageRef.current.scrollHeight);
+
   return (
     <>
-      <div id="messages" className="messages scroll ">
-        {messages && (
-          <>
-            <Message messages={messages} />{" "}
-            <MDBRow style={{ display: "flex", justifyContent: "center" }}>
-              {" "}
-              {loading && hasNextPage && <Spinner />}
-              {!loading && hasNextPage && (
-                <MDBBtn
-                  className="btn-view-more"
-                  onClick={() =>
-                    moreMessages(messages[messages.length - 1]._id)
-                  }
-                >
-                  Ver más
-                </MDBBtn>
-              )}
-            </MDBRow>
-          </>
-        )}
+      <div className="messages scroll" ref={messageRef}>
+        <div className="inner">
+          {messages && (
+            <>
+              <Message messages={messages} />{" "}
+              <MDBRow style={{ display: "flex", justifyContent: "center" }}>
+                {" "}
+                {loading && hasNextPage && <Spinner />}
+                {!loading && hasNextPage && (
+                  <MDBBtn
+                    className="btn-view-more"
+                    onClick={() =>
+                      moreMessages(messages[messages.length - 1]._id)
+                    }
+                  >
+                    Ver más
+                  </MDBBtn>
+                )}
+              </MDBRow>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

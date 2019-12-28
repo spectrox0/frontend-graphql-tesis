@@ -21,6 +21,11 @@
   }
   .messages {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    .inner {
+      display: flex;
+      flex-direction: column-reverse;
+      flex-grow: 1;
+    }
   }
 }
