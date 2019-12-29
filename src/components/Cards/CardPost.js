@@ -13,7 +13,6 @@ export default function CardPost({
   date,
   urlImg,
   creator,
-  lastMessage,
   changePost,
   postId,
   closeSideBar
@@ -43,9 +42,7 @@ export default function CardPost({
             <h3> {title} </h3>
             <span> {new Date(date).toLocaleString("en-VE", options)} </span>
           </Row>
-          <Row>
-            <p>{lastMessage}</p>
-          </Row>
+          <Row></Row>
         </Col>
       </Body>
     </Card>
