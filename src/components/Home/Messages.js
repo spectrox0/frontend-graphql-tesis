@@ -45,7 +45,7 @@ export default function Messages({
   React.useEffect(() => {
     scrollBottom();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messages[0]]);
+  }, [messages]);
 
   const scrollBottom = () =>
     (messageRef.current.scrollTop = messageRef.current.scrollHeight);
