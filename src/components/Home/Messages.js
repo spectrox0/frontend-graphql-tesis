@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
 import CardMessage from "./../Cards/CardMessage";
 import { MDBBtn, MDBRow } from "mdbreact";
 import { useSelector } from "react-redux";
 import Spinner from "../spinner";
-import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
 export default function Messages({
   messages,
   subscribeToMore,
@@ -27,27 +26,11 @@ export default function Messages({
   };
 
   useEffect(() => {
-    const unsubscribe = subscribeToMore({
-      document: MESSAGE_ADDED_SUBSCRIPTION,
-      variables: { postId: postId },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const newMessage = subscriptionData.data.messageAdded;
-        if (!prev.messages.messages.find(msg => msg._id === newMessage._id)) {
-          const res = Object.assign({}, prev, {
-            messages: {
-              ...prev.messages,
-              messages: [newMessage, ...prev.messages.messages]
-            }
-          });
-          return res;
-        } else return prev;
-      }
-    });
+    subscribeToMore();
     return function cleanup() {
-      unsubscribe();
+      subscribeToMore();
     };
-  }, [postId, subscribeToMore]);
+  }, [subscribeToMore]);
   const Message = ({ messages }) => {
     return messages.map(message => (
       <CardMessage

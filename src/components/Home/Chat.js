@@ -6,7 +6,7 @@ import Messages from "./Messages";
 import Spinner from "./../spinner";
 import { QUERY_MESSAGES } from "../../helpers/graphql/querys/querys";
 import { useSelector, useDispatch } from "react-redux";
-
+import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
 export default function Chat() {
   const { postId, title, urlImg, creator } = useSelector(state => ({
     ...state.Post
@@ -25,6 +25,7 @@ export default function Chat() {
         first: 5,
         after: cursor
       },
+
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
         return Object.assign({}, prev, {
@@ -50,6 +51,25 @@ export default function Chat() {
     }
   }, [MessagesQuery, postId]);
 
+  const subscribeToNew = () =>
+    subscribeToMore({
+      document: MESSAGE_ADDED_SUBSCRIPTION,
+      variables: { postId: postId },
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const newMessage = subscriptionData.data.messageAdded;
+        if (!prev.messages.messages.find(msg => msg._id === newMessage._id)) {
+          const res = Object.assign({}, prev, {
+            messages: {
+              ...prev.messages,
+              messages: [newMessage, ...prev.messages.messages]
+            }
+          });
+          return res;
+        } else return prev;
+      }
+    });
+
   const onClick = () => {
     dispatch({
       type: "TOGGLE"
@@ -61,7 +81,7 @@ export default function Chat() {
       {data && (
         <Messages
           postId={postId}
-          subscribeToMore={subscribeToMore}
+          subscribeToMore={subscribeToNew}
           moreMessages={moreMessages}
           messages={data.messages.messages}
           loading={loading}
