@@ -12,13 +12,13 @@ const endpointWs = "wss://api-graphql-tesis.herokuapp.com/graphql";
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
-  //uri: endpoint
-  uri: "http://localhost:4000/graphql"
+  uri: endpoint
+  //uri: "http://localhost:4000/graphql"
 });
 const token = localStorage.getItem("token");
 const wsLink = new WebSocketLink({
-  //uri: endpointWs,
-  uri: "ws://localhost:4000/graphql",
+  uri: endpointWs,
+  // uri: "ws://localhost:4000/graphql",
   options: {
     reconnect: true, // reconecta si ocurre algun error
     lazy: true, // solo establece la coneccion cuando se ejecute una subscription
