@@ -6,9 +6,7 @@ import { useQuery, useSubscription } from "@apollo/react-hooks";
 import { QUERY_NOTIFICATIONS } from "../../helpers/graphql/querys/querys";
 import { useSelector } from "react-redux";
 import { useAlert } from "react-alert";
-export default function HeaderSideBar({ onClick }) {
-  const { userId } = useSelector(state => ({ ...state.User }));
-
+export default function HeaderSideBar({ onClick, userId }) {
   const { data, loading, error, subscribeToMore, refetch } = useQuery(
     QUERY_NOTIFICATIONS,
     {

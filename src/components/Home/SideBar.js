@@ -5,9 +5,10 @@ import Settings from "./Settings";
 import InfoUser from "./InfoUser";
 
 import Switch from "./Switch.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SideBar({ isOpenSideBar }) {
+  const { userId } = useSelector(state => ({ ...state.User }));
   const [options, setOptions] = useState(0);
   const [isOpenSettings, setIsOpenSettings] = useState(false);
   const dispatch = useDispatch();
@@ -28,10 +29,16 @@ export default function SideBar({ isOpenSideBar }) {
     <>
       <div className={isOpenSideBar ? "sideBar isOpen" : "sideBar"}>
         <div>
-          <Header onClick={onClick} />
+          {userId && <Header onClick={onClick} userId={userId} />}
           <Menu options={options} changeOption={changeOption} />
         </div>
-        <Switch options={options} changeOption={changeOption} />
+        {userId && (
+          <Switch
+            userId={userId}
+            options={options}
+            changeOption={changeOption}
+          />
+        )}
         <InfoUser toggle={openSettings} />
         <Settings toggle={openSettings} isOpen={isOpenSettings} />
       </div>{" "}

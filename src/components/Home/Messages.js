@@ -26,9 +26,9 @@ export default function Messages({
   };
 
   useEffect(() => {
-    subscribeToMore();
+    const unsubscription = subscribeToMore();
     return function cleanup() {
-      subscribeToMore();
+      unsubscription();
     };
   }, [subscribeToMore]);
   const Message = ({ messages }) => {

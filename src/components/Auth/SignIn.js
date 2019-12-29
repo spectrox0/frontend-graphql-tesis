@@ -52,7 +52,7 @@ export default function SignIn({ isSignIn }) {
           alert.error("Error");
         }
         resetForm();
-        setSubmitting(false);
+        return setSubmitting(false);
       }}
     >
       {({
