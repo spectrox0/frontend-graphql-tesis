@@ -7,10 +7,10 @@ import {
   MDBIcon
 } from "mdbreact";
 import CardNotifications from "./../Cards/CardNotification";
-import { DELETE_NOTIFICATIONS } from "../../helpers/graphql/mutations/mutations";
+import { DELETE_NOTIFICATIONS } from "../../helpers/graphql/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { NOTIFICATION_ADDED_SUSCRIPTION } from "../../helpers/graphql/subscription/subcription";
+import { NOTIFICATION_ADDED_SUSCRIPTION } from "../../helpers/graphql/subscription";
 export default function Notification({
   notifications,
   subscribeToMore,

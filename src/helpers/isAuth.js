@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CURRENT_USER } from "./graphql/querys/querys";
+import { CURRENT_USER } from "./graphql/querys";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";

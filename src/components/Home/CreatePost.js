@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Formik } from "formik";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { QUERY_CATEGORY } from "../../helpers/graphql/querys/querys";
-import { CREATE_POST } from "../../helpers/graphql/mutations/mutations";
+import { QUERY_CATEGORY } from "../../helpers/graphql/querys";
+import { CREATE_POST } from "../../helpers/graphql/mutations";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import Spinner from "./../spinner";
 import UploadImage from "../uploadImage.js";

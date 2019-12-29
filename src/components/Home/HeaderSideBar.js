@@ -3,7 +3,7 @@ import Toggle from "../toggle.js";
 import Notification from "./Notification";
 import { MDBRow, MDBCol } from "mdbreact";
 import { useQuery, useSubscription } from "@apollo/react-hooks";
-import { QUERY_NOTIFICATIONS } from "../../helpers/graphql/querys/querys";
+import { QUERY_NOTIFICATIONS } from "../../helpers/graphql/querys";
 import { useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 export default function HeaderSideBar({ onClick, userId }) {

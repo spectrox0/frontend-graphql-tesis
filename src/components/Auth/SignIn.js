@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Formik } from "formik";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import { useMutation } from "@apollo/react-hooks";
-import { LOGIN } from "../../helpers/graphql/mutations/mutations";
+import { LOGIN } from "../../helpers/graphql/mutations";
 import Spinner from "../spinner.js";
 import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";

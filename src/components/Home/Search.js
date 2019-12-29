@@ -3,7 +3,7 @@ import CardCategories from "../Cards/CardCategory";
 import HeaderSearch from "./HeaderSearch";
 import CardPosts from "../Cards/CardPost";
 import { useQuery } from "@apollo/react-hooks";
-import { QUERY_SEARCH_POST } from "../../helpers/graphql/querys/querys";
+import { QUERY_SEARCH_POST } from "../../helpers/graphql/querys";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../pagination";
 import Spinner from "../spinner";

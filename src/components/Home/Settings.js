@@ -3,7 +3,7 @@ import { MDBModal, MDBModalHeader, MDBModalBody } from "mdbreact";
 import { Formik } from "formik";
 import { MDBBtn, MDBIcon } from "mdbreact";
 import { useMutation } from "@apollo/react-hooks";
-import { UPDATE_USER } from "../../helpers/graphql/mutations/mutations";
+import { UPDATE_USER } from "../../helpers/graphql/mutations";
 import UploadImage from "../uploadImage.js";
 
 import Spinner from "../spinner.js";

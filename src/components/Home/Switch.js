@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/react-hooks";
 import {
   QUERY_CATEGORY,
   QUERY_POST_BY_CREATOR
-} from "../../helpers/graphql/querys/querys";
+} from "../../helpers/graphql/querys";
 import { useSelector } from "react-redux";
 export default function Switch(props) {
   const { data, loading, error } = useQuery(QUERY_CATEGORY);

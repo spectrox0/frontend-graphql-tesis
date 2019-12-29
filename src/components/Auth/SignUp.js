@@ -4,7 +4,7 @@ import { MDBBtn, MDBIcon, MDBWaves } from "mdbreact";
 import UploadImage from "../uploadImage.js";
 import Spinner from "../spinner.js";
 import { useMutation } from "@apollo/react-hooks";
-import { LOGIN, CREATE_USER } from "../../helpers/graphql/mutations/mutations";
+import { LOGIN, CREATE_USER } from "../../helpers/graphql/mutations";
 import Error from "./Error.js";
 import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";

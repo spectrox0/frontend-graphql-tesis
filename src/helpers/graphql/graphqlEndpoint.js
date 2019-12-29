@@ -18,7 +18,7 @@ const httpLink = new HttpLink({
 const token = localStorage.getItem("token");
 const wsLink = new WebSocketLink({
   uri: endpointWs,
-  // uri: "ws://localhost:4000/graphql",
+  //uri: "ws://localhost:4000/graphql",
   options: {
     reconnect: true, // reconecta si ocurre algun error
     lazy: true, // solo establece la coneccion cuando se ejecute una subscription

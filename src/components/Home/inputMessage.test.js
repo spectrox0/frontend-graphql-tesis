@@ -2,7 +2,7 @@ import { MockedProvider } from "@apollo/react-testing";
 
 import { InputMessage } from "./inputMessage";
 
-import { CREATE_MESSAGE } from "../../helpers/graphql/mutations/mutations";
+import { CREATE_MESSAGE } from "../../helpers/graphql/mutations";
 
 const mocks = {
   request: {

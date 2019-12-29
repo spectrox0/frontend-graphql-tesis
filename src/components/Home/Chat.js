@@ -4,9 +4,9 @@ import Navbar from "./NavBar";
 import { useLazyQuery } from "@apollo/react-hooks";
 import Messages from "./Messages";
 import Spinner from "./../spinner";
-import { QUERY_MESSAGES } from "../../helpers/graphql/querys/querys";
+import { QUERY_MESSAGES } from "../../helpers/graphql/querys";
 import { useSelector, useDispatch } from "react-redux";
-import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
+import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription";
 export default function Chat() {
   const { postId, title, urlImg, creator } = useSelector(state => ({
     ...state.Post

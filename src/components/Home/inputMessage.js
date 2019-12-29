@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/react-hooks";
 import {
   CREATE_MESSAGE,
   CREATE_NOTIFICATION
-} from "../../helpers/graphql/mutations/mutations";
+} from "../../helpers/graphql/mutations";
 
 import Spinner from "../spinner";
 import { useAlert } from "react-alert";

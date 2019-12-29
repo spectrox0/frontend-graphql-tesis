@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription/subcription";
+import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription";
 import CardMessage from "./../Cards/CardMessage";
 import { MDBBtn, MDBRow } from "mdbreact";
 import { useSelector } from "react-redux";
