@@ -86,7 +86,7 @@ export default function Chat() {
           Welcome <img src={require("../../assets/img/graphql.svg")} alt="" />{" "}
         </div>
       )}
-      {postId ? <InputMessage postId={postId} /> : <BarLoad />}
+      {postId && data ? <InputMessage postId={postId} /> : <BarLoad />}
     </div>
   );
 }
