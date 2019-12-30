@@ -41,13 +41,10 @@
     }
   }
   @keyframes animationBar {
-    0% {
-      background: $color-secondary;
+    from {
       transform: translateX(-5vw);
     }
-    100% {
-      opacity: 0;
-      background: $color-tertiary;
+    to {
       transform: translateX(100vw) scale(1);
     }
   }

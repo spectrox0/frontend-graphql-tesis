@@ -6,7 +6,7 @@ export default function BarLoad() {
       <div className="packman">
         <div className="eyes" />
         <div className="mouth" />
-        <div class="food" />
+        <div className="food" />
       </div>
     </div>
   );
