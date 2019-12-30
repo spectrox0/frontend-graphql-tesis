@@ -26,11 +26,29 @@ export default function Messages({
   };
 
   useEffect(() => {
-    const unsubscription = subscribeToMore();
-    return function cleanup() {
+    const unsubscription = subscribeToMore({
+      document: MESSAGE_ADDED_SUBSCRIPTION,
+      variables: { postId: postId },
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const newMessage = subscriptionData.data.messageAdded;
+        if (!prev.messages.messages.find(msg => msg._id === newMessage._id)) {
+          const res = Object.assign({}, prev, {
+            messages: {
+              ...prev.messages,
+              messages: [newMessage, ...prev.messages.messages]
+            }
+          });
+          return res;
+        } else return prev;
+      }
+    });
+    return () => {
       unsubscription();
     };
-  }, [subscribeToMore]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [postId]);
+
   const Message = ({ messages }) => {
     return messages.map(message => (
       <CardMessage
@@ -45,7 +63,7 @@ export default function Messages({
   React.useEffect(() => {
     scrollBottom();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messages]);
+  }, [messages[0]]);
 
   const scrollBottom = () =>
     (messageRef.current.scrollTop = messageRef.current.scrollHeight);
@@ -59,7 +77,7 @@ export default function Messages({
               <Message messages={messages} />{" "}
               <MDBRow style={{ display: "flex", justifyContent: "center" }}>
                 {" "}
-                {loading && hasNextPage && <Spinner />}
+                {loading && <Spinner />}
                 {!loading && hasNextPage && (
                   <MDBBtn
                     className="btn-view-more"

@@ -1,0 +1,60 @@
+.barLoad {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .packman {
+    width: 3rem;
+    height: 3rem;
+    background: $color-secondary;
+    border-radius: 50%;
+    animation: animationBar 7s infinite linear;
+    .eyes {
+      position: absolute;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      top: 0.4rem;
+      right: 0.8rem;
+      background: #333333;
+    }
+    .mouth {
+      background: $background-color;
+      position: absolute;
+      left: 0.4rem;
+      width: 90%;
+      height: 90%;
+      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+      animation: eat infinite 0.7s;
+    }
+  }
+  @keyframes animationBar {
+    0% {
+      background: $color-secondary;
+      transform: translateX(-5vw);
+    }
+    100% {
+      opacity: 0;
+      background: $color-tertiary;
+      transform: translateX(100vw) scale(1);
+    }
+  }
+
+  @keyframes eat {
+    0% {
+      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    }
+    25% {
+      clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+    }
+    50% {
+      clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+    }
+    75% {
+      clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+    }
+    100% {
+      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    }
+  }
+}

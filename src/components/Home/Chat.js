@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import InputMessage from "./inputMessage";
+import BarLoad from "./barLoad";
 import Navbar from "./NavBar";
 import { useLazyQuery } from "@apollo/react-hooks";
 import Messages from "./Messages";
 import Spinner from "./../spinner";
 import { QUERY_MESSAGES } from "../../helpers/graphql/querys";
 import { useSelector, useDispatch } from "react-redux";
-import { MESSAGE_ADDED_SUBSCRIPTION } from "../../helpers/graphql/subscription";
+
 export default function Chat() {
   const { postId, title, urlImg, creator } = useSelector(state => ({
     ...state.Post
@@ -14,12 +15,14 @@ export default function Chat() {
   const [
     MessagesQuery,
     { data, subscribeToMore, loading, error, fetchMore }
-  ] = useLazyQuery(QUERY_MESSAGES, { fetchPolicy: "cache-and-network" });
+  ] = useLazyQuery(QUERY_MESSAGES, { fetchPolicy: "network-only" });
 
   const dispatch = useDispatch();
+  const [loadingMore, setLoadingMore] = useState(false);
 
-  const moreMessages = cursor =>
-    fetchMore({
+  const moreMessages = async cursor => {
+    setLoadingMore(true);
+    await fetchMore({
       variables: {
         postId: postId,
         first: 5,
@@ -40,6 +43,9 @@ export default function Chat() {
         });
       }
     });
+    setLoadingMore(false);
+  };
+
   useEffect(() => {
     if (postId) {
       MessagesQuery({
@@ -50,25 +56,6 @@ export default function Chat() {
       });
     }
   }, [MessagesQuery, postId]);
-
-  const subscribeToNew = () =>
-    subscribeToMore({
-      document: MESSAGE_ADDED_SUBSCRIPTION,
-      variables: { postId: postId },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const newMessage = subscriptionData.data.messageAdded;
-        if (!prev.messages.messages.find(msg => msg._id === newMessage._id)) {
-          const res = Object.assign({}, prev, {
-            messages: {
-              ...prev.messages,
-              messages: [newMessage, ...prev.messages.messages]
-            }
-          });
-          return res;
-        } else return prev;
-      }
-    });
 
   const onClick = () => {
     dispatch({
@@ -81,10 +68,10 @@ export default function Chat() {
       {data && (
         <Messages
           postId={postId}
-          subscribeToMore={subscribeToNew}
+          subscribeToMore={subscribeToMore}
           moreMessages={moreMessages}
           messages={data.messages.messages}
-          loading={loading}
+          loading={loadingMore}
           hasNextPage={data.messages.hasNextPage}
         />
       )}
@@ -99,7 +86,7 @@ export default function Chat() {
           Welcome <img src={require("../../assets/img/graphql.svg")} alt="" />{" "}
         </div>
       )}
-      <InputMessage postId={postId} />
+      {postId ? <InputMessage postId={postId} /> : <BarLoad />}
     </div>
   );
 }
