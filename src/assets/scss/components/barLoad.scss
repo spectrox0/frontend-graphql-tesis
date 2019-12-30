@@ -27,6 +27,18 @@
       clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
       animation: eat infinite 0.7s;
     }
+    .food {
+      position: absolute;
+      width: 0.8rem;
+      height: 0.9rem;
+      background: #fff;
+      border-radius: 50%;
+      top: 30%;
+      left: 4.8rem;
+      animation-name: food;
+      animation-duration: 0.7s;
+      animation-iteration-count: infinite;
+    }
   }
   @keyframes animationBar {
     0% {
@@ -55,6 +67,16 @@
     }
     100% {
       clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    }
+  }
+  @keyframes food {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-2.4rem);
+      opacity: 0;
     }
   }
 }

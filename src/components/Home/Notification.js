@@ -93,7 +93,7 @@ export default function Notification({
         <MDBIcon icon="bell" />
       </MDBDropdownToggle>
       {notifications.length > 0 && (
-        <MDBDropdownMenu basic>
+        <MDBDropdownMenu className="scroll" basic>
           <Notifications notifications={notifications} />
         </MDBDropdownMenu>
       )}

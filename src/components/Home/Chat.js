@@ -83,7 +83,9 @@ export default function Chat() {
       )}
       {!data && !loading && (
         <div className="initMessage">
-          Welcome <img src={require("../../assets/img/graphql.svg")} alt="" />{" "}
+          <div className="message">
+            Welcome <img src={require("../../assets/img/graphql.svg")} alt="" />
+          </div>
         </div>
       )}
       {postId && data ? <InputMessage postId={postId} /> : <BarLoad />}

@@ -18,6 +18,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    .message {
+      font-weight: 900;
+      font-size: 2rem;
+      text-shadow: 0 0 3px #ffffff;
+    }
+    img {
+      width: 5rem;
+      animation: graphql infinite 5s linear;
+    }
+    @keyframes graphql {
+      to {
+        transform: rotate(360deg);
+      }
+    }
   }
   .messages {
     display: flex;
