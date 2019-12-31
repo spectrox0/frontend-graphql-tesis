@@ -98,7 +98,7 @@ export default function InputMessage({ postId }) {
                 className="btn-send"
                 disabled={isSubmitting}
               >
-                <MDBIcon icon="send" />
+                <MDBIcon icon="paper-plane" />
               </MDBBtn>
             )}
           </form>

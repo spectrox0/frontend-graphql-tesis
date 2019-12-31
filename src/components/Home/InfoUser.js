@@ -28,7 +28,7 @@ export default function InfoUser({ toggle }) {
               <MDBIcon icon="cogs" />
             </MDBBtn>
             <MDBBtn className="btn-send">
-              <MDBIcon icon="sign-out" onClick={logout} />
+              <MDBIcon icon="sign-out-alt" onClick={logout} />
             </MDBBtn>
           </MDBRow>
         </MDBCol>
