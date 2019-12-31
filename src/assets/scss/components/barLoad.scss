@@ -1,79 +1,121 @@
-.barLoad {
-  height: 4rem;
+#movingBallG {
+  position: relative;
   width: 100%;
-  display: flex;
-  align-items: center;
-  .packman {
-    width: 3rem;
-    height: 3rem;
-    background: $color-secondary;
-    border-radius: 50%;
-    animation: animationBar 7s infinite linear;
-    .eyes {
-      position: absolute;
-      width: 0.4rem;
-      height: 0.4rem;
-      border-radius: 50%;
-      top: 0.4rem;
-      right: 0.8rem;
-      background: #333333;
-    }
-    .mouth {
-      background: $background-color;
-      position: absolute;
-      left: 0.4rem;
-      width: 90%;
-      height: 90%;
-      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-      animation: eat infinite 0.7s;
-    }
-    .food {
-      position: absolute;
-      width: 0.8rem;
-      height: 0.9rem;
-      background: #fff;
-      border-radius: 50%;
-      top: 30%;
-      left: 4.8rem;
-      animation-name: food;
-      animation-duration: 0.7s;
-      animation-iteration-count: infinite;
-    }
-  }
-  @keyframes animationBar {
-    from {
-      transform: translateX(-5vw);
-    }
-    to {
-      transform: translateX(100vw) scale(1);
-    }
+  height: 1rem;
+  margin: auto;
+}
+
+.movingBallLineG {
+  position: absolute;
+  left: 0px;
+  top: 8px;
+  height: 0.2rem;
+  width: 100%;
+  background-color: $background-sideBar;
+  box-shadow: 0 0 2px $color-secondary;
+}
+
+.movingBallG {
+  background-color: $color-secondary;
+  box-shadow: 0 0 4px $color-secondary;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  animation-name: bounce_movingBallG;
+  -o-animation-name: bounce_movingBallG;
+  -ms-animation-name: bounce_movingBallG;
+  -webkit-animation-name: bounce_movingBallG;
+  -moz-animation-name: bounce_movingBallG;
+  animation-duration: 3s;
+  -o-animation-duration: 3s;
+  -ms-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  -moz-animation-duration: 3s;
+  animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-direction: normal;
+  -o-animation-direction: normal;
+  -ms-animation-direction: normal;
+  -webkit-animation-direction: normal;
+  -moz-animation-direction: normal;
+}
+
+@keyframes bounce_movingBallG {
+  0% {
+    left: 0px;
   }
 
-  @keyframes eat {
-    0% {
-      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-    }
-    25% {
-      clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
-    }
-    50% {
-      clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
-    }
-    75% {
-      clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
-    }
-    100% {
-      clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-    }
+  50% {
+    left: 98%;
   }
-  @keyframes food {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(-2.4rem);
-      opacity: 0;
-    }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@-o-keyframes bounce_movingBallG {
+  0% {
+    left: 0px;
+  }
+
+  50% {
+    left: 98%;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@-ms-keyframes bounce_movingBallG {
+  0% {
+    left: 0px;
+  }
+
+  50% {
+    left: 98%;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@-webkit-keyframes bounce_movingBallG {
+  0% {
+    left: 0px;
+  }
+
+  50% {
+    left: 98%;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@-moz-keyframes bounce_movingBallG {
+  0% {
+    left: 0px;
+  }
+
+  50% {
+    left: 98%;
+  }
+
+  100% {
+    left: 0px;
   }
 }

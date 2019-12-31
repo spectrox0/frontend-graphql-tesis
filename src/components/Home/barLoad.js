@@ -2,12 +2,9 @@ import React from "react";
 
 export default function BarLoad() {
   return (
-    <div className="barLoad">
-      <div className="packman">
-        <div className="eyes" />
-        <div className="mouth" />
-        <div className="food" />
-      </div>
+    <div id="movingBallG">
+      <div class="movingBallLineG"></div>
+      <div id="movingBallG_1" class="movingBallG"></div>
     </div>
   );
 }

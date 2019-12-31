@@ -2,8 +2,13 @@ import React from "react";
 
 export default function Spinner() {
   return (
-    <div className="spinner-border fast" role="status">
-      <span className="sr-only">Loading...</span>
+    <div class="loader">
+      <div class="face">
+        <div class="circle"></div>
+      </div>
+      <div class="face">
+        <div class="circle"></div>
+      </div>
     </div>
   );
 }
