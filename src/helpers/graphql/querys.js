@@ -114,6 +114,11 @@ export const QUERY_NOTIFICATIONS = gql`
       }
       post {
         _id
+        title
+        urlImg
+        creator {
+          _id
+        }
       }
     }
   }
