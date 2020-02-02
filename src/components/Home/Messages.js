@@ -51,12 +51,9 @@ export default function Messages({
 
   const Message = ({ messages }) => {
     return messages.map(message => (
-      <CardMessage
-        key={message._id}
-        userId={userId}
-        options={options}
-        {...message}
-      />
+      <div key={message._id} className="d-flex flex-column w-100 ">
+        <CardMessage userId={userId} options={options} {...message} />
+      </div>
     ));
   };
 
@@ -71,7 +68,7 @@ export default function Messages({
   return (
     <>
       <div className="messages scroll" ref={messageRef}>
-        <div className="inner">
+        <div className="inner d-flex flex-column-reverse">
           {messages && (
             <>
               <Message messages={messages} />{" "}

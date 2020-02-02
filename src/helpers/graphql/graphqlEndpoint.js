@@ -2,7 +2,6 @@ import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { setContext } from "apollo-link-context";
-
 import { split } from "apollo-link";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
@@ -12,18 +11,19 @@ const endpointWs = "wss://api-graphql-tesis.herokuapp.com/graphql";
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
-  //uri: endpoint
-  uri: "http://localhost:4000/graphql"
+  uri: endpoint
+  //uri: "http://localhost:4000/graphql"
 });
 const token = localStorage.getItem("token");
 const wsLink = new WebSocketLink({
-  // uri: endpointWs,
-  uri: "ws://localhost:4000/graphql",
+  uri: endpointWs,
+  //uri: "ws://localhost:4000/graphql",
   options: {
     reconnect: true, // reconecta si ocurre algun error
     lazy: true, // solo establece la coneccion cuando se ejecute una subscription
     connectionParams: {
-      authToken: token ? `Bearer ${token}` : "" // se pasa el token como parametro para que unicamente usuarios pueden subscribirse en el servidor
+      authToken: token ? `Bearer ${token}` : "" // se pasa el token como parametro
+      // que unicamente usuarios pueden subscribirse en el servidor
     }
   }
 });
@@ -31,7 +31,7 @@ const wsLink = new WebSocketLink({
 const authLink = setContext((_, { headers }) => {
   // obtiene el token de autorizacion si existe del local storage
   const token = localStorage.getItem("token");
-  // return the headers to the context so httpLink can read them
+  // retorna el headers al context entonces httpLink podra leerlo
   return {
     headers: {
       ...headers,
