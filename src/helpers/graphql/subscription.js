@@ -6,9 +6,7 @@ export const MESSAGE_ADDED_SUBSCRIPTION = gql`
       content
       date
       user {
-        _id
         username
-        name
         urlImg
       }
     }
