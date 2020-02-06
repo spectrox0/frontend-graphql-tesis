@@ -89,6 +89,8 @@ export const QUERY_MESSAGES = gql`
         content
         date
         user {
+          _id
+          username
           urlImg
         }
       }

@@ -1,0 +1,34 @@
+[debug] [2020-02-06T12:59:07.637Z] ----------------------------------------------------------------------
+[debug] [2020-02-06T12:59:07.639Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2020-02-06T12:59:07.639Z] CLI Version:   7.4.0
+[debug] [2020-02-06T12:59:07.639Z] Platform:      linux
+[debug] [2020-02-06T12:59:07.639Z] Node Version:  v12.14.1
+[debug] [2020-02-06T12:59:07.640Z] Time:          Thu Feb 06 2020 08:59:07 GMT-0400 (GMT-04:00)
+[debug] [2020-02-06T12:59:07.640Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2020-02-06T12:59:07.644Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-06T12:59:07.645Z] > authorizing via signed-in user
+[debug] [2020-02-06T12:59:07.645Z] [iam] checking project frontend-react-graphql for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-02-06T12:59:07.646Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/frontend-react-graphql:testIamPermissions  
+
+[debug] [2020-02-06T12:59:08.150Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-06T12:59:08.155Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/frontend-react-graphql  
+ 
+[debug] [2020-02-06T12:59:08.657Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'frontend-react-graphql'...
+[info] 
+[info] i  deploying hosting
+[debug] [2020-02-06T12:59:08.667Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/frontend-react-graphql/versions  
+
+[debug] [2020-02-06T12:59:09.988Z] <<< HTTP RESPONSE 200
+[info] i  hosting[frontend-react-graphql]: beginning deploy...
+[info] i  hosting[frontend-react-graphql]: found 34 files in build
+[debug] [2020-02-06T12:59:10.013Z] [hosting] hash cache [YnVpbGQ] load error: lines is not defined
+[debug] [2020-02-06T12:59:10.871Z] [hosting] hash cache [YnVpbGQ] stored for 34 files
+[debug] [2020-02-06T12:59:10.872Z] [hosting][hash queue][FINAL]
+[debug] [2020-02-06T12:59:10.872Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/frontend-react-graphql/versions/ced7e22c330c2643:populateFiles  
+ <request body omitted>
+[debug] [2020-02-06T12:59:11.897Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-06T12:59:11.908Z] [hosting][populate queue][FINAL]
+[debug] [2020-02-06T12:59:11.908Z] [hosting] uploads queued: 6

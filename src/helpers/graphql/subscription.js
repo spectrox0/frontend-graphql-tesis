@@ -8,6 +8,7 @@ export const MESSAGE_ADDED_SUBSCRIPTION = gql`
       user {
         username
         urlImg
+        _id
       }
     }
   }
