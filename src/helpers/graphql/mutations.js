@@ -47,7 +47,6 @@ export const CREATE_MESSAGE = gql`
       _id
       content
       user {
-        _id
         urlImg
         username
       }
