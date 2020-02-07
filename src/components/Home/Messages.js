@@ -39,6 +39,7 @@ export default function Messages({
               messages: [newMessage, ...prev.messages.messages]
             }
           });
+          console.log("tiempo en que es recibido el mensaje:" + Date.now());
           return res;
         } else return prev;
       }

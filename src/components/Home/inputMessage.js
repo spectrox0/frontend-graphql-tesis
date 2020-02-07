@@ -40,6 +40,7 @@ export default function InputMessage({ postId }) {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
           try {
+            console.log("tiempo en que es enviado el mensaje: " + Date.now());
             const { data } = await CreateMessage({
               variables: {
                 messageInput: {
@@ -49,7 +50,7 @@ export default function InputMessage({ postId }) {
                 }
               }
             });
-            if (userId != creator)
+            if (userId != creator._id) {
               if (data) {
                 const { data: dataNotification } = await CreateNotification({
                   variables: {
@@ -60,8 +61,9 @@ export default function InputMessage({ postId }) {
                     }
                   }
                 });
-                if (dataNotification) setSubmitting(false);
               }
+            }
+            setSubmitting(false);
           } catch (err) {
             alert.error("Error");
             setSubmitting(false);
