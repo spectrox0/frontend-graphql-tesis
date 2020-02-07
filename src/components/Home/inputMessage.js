@@ -49,18 +49,19 @@ export default function InputMessage({ postId }) {
                 }
               }
             });
-            if (data) {
-              const { data: dataNotification } = await CreateNotification({
-                variables: {
-                  notificationInput: {
-                    postId,
-                    userId: creator._id,
-                    messageId: data.createMessage._id
+            if (userId != creator)
+              if (data) {
+                const { data: dataNotification } = await CreateNotification({
+                  variables: {
+                    notificationInput: {
+                      postId,
+                      userId: creator._id,
+                      messageId: data.createMessage._id
+                    }
                   }
-                }
-              });
-              if (dataNotification) setSubmitting(false);
-            }
+                });
+                if (dataNotification) setSubmitting(false);
+              }
           } catch (err) {
             alert.error("Error");
             setSubmitting(false);
