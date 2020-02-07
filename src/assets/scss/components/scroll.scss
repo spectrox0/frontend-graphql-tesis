@@ -2,8 +2,6 @@
   overflow: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  width: 100%;
-  height: 100%;
   scrollbar-color: $color-primary transparent;
 }
 .scroll::-webkit-scrollbar-track {

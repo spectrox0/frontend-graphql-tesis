@@ -68,7 +68,7 @@ export default function Messages({
   return (
     <>
       <div className="messages scroll" ref={messageRef}>
-        <div className="inner d-flex flex-column-reverse">
+        <div className="inner">
           {messages && (
             <>
               <Message messages={messages} />{" "}
