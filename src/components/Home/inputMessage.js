@@ -40,7 +40,6 @@ export default function InputMessage({ postId }) {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
           try {
-            console.log("tiempo en que es enviado el mensaje: " + Date.now());
             const { data } = await CreateMessage({
               variables: {
                 messageInput: {
