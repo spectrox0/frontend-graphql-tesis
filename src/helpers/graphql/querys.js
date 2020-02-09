@@ -29,9 +29,6 @@ export const QUERY_POST_BY_CREATOR = gql`
       title
       date
       urlImg
-      creator {
-        _id
-      }
     }
   }
 `;
